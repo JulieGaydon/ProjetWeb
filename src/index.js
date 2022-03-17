@@ -6,15 +6,15 @@ import Logout from './Logout';
 import Login from './Login';
 import Signin from './Signin';
 import Message from './Message';
+import ListeMessage from './ListeMessage';
 import PagePrincipale from './PagePrincipale';
 import Utilisateur from './Utilisateur';
 import * as serviceWorker from './serviceWorker';
 
- ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
-//  ReactDOM.render(<Signin/>, document.getElementById('root'));
+//  ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
 //  ReactDOM.render(<Utilisateur/>, document.getElementById('root'));
-//  ReactDOM.render(<Message/>, document.getElementById('root'));
-// ReactDOM.render(<Login/>, document.getElementById('root'));
+ ReactDOM.render(<Message/>, document.getElementById('root'));
+//  ReactDOM.render(<ListeMessage/>, document.getElementById('root'));
 // ReactDOM.render(<Logout />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));
 

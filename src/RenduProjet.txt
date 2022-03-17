@@ -3,9 +3,7 @@ Components :
 - Login
 - Logout
 - Actualités
-- MainPage
 - Signin
-- NavigationPannel ?
 - Actualités
 - Message
 - ListeMessage
@@ -20,15 +18,6 @@ Login : etat=false
 Logout : etat=true
     permet l'affichage du bouton deconnexion lorsqu'on est connecte
 
-MainPage : etat=false/true
-    - getConnected() :
-        permet de changer l'etat de connexion a true lorsqu'on est deconnecte
-    - setLogout() :
-        permet de changer l'etat de connexion a false lorsqu'on est connecte
-    - render() :
-        affiche page connexion quand deconnecte
-        affiche mur de tweets quand connecte
-
 Signin : etat=false
     - inscription() :
         change etat de connexion a true
@@ -42,9 +31,6 @@ PagePrincipale : etat=false
         change etat du bouton inscription a true
     - EventConnected() :
         permet d'afficher la bonne page selon le bouton clique (Login ou Signin)
-
-NavigationPannel : etat=false
-    A supprimer ? Inutile ?
 
 Utilisateur : etat=true
 

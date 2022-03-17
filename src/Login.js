@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Actualites from './Actualites';
+import PagePrincipale from './PagePrincipale';
 
 
 class Login extends Component{
@@ -11,6 +12,13 @@ class Login extends Component{
     connexion() {
         this.setState({Pseudo : "Pseudo",connexion : true});
         return this.state;
+    }
+
+    annulation() {
+        this.setState({Pseudo : "Pseudo",connexion : false});
+        return (<div className = "Actualites">
+            {<PagePrincipale/>}
+        </div>);
     }
 
     EventConnected() {      
