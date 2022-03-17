@@ -1,0 +1,49 @@
+label{
+    float : left;
+    margin-left: 75px;
+    width : 150px;
+}
+    
+input{
+    margin: 3px;
+}
+
+legend {
+    color : black;
+    font-weight: bold;
+    font-variant:small-caps;
+  }
+
+fieldset {
+    display: center;
+    background-color: lightblue;
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
+}
+
+button{
+    /* background-color:rgb(103, 141, 141);   */
+    color:black;
+    font-family: Arial, sans-serif;
+    font-size: 15 px; 
+    margin-top: 10px; 
+    margin-left: 220px; 
+}
+
+b{
+    /* background-color:rgb(103, 141, 141);   */
+    color:red;
+    font-family: Arial, sans-serif;
+    font-size: 15 px; 
+    /* margin-top: 100px; 
+    margin-left: 220px;  */
+}
+
+/* body{
+    font-family: Arial, sans-serif;
+    background-image:url(./PSG.jpg);
+    background-position:center center;
+} */

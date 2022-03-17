@@ -1,0 +1,55 @@
+Components :
+- PagePrincipale
+- Login
+- Logout
+- Actualités
+- MainPage
+- Signin
+- NavigationPannel ?
+- Actualités
+- Message
+- ListeMessage
+- Utilisateur
+
+Login : etat=false
+    - connexion() :
+        change l'etat de connexion en true
+    - EventConnected() :
+        permet d'afficher la bonne page selon le bouton clique (PagePrincipale, Mur de Tweet)
+
+Logout : etat=true
+    permet l'affichage du bouton deconnexion lorsqu'on est connecte
+
+MainPage : etat=false/true
+    - getConnected() :
+        permet de changer l'etat de connexion a true lorsqu'on est deconnecte
+    - setLogout() :
+        permet de changer l'etat de connexion a false lorsqu'on est connecte
+    - render() :
+        affiche page connexion quand deconnecte
+        affiche mur de tweets quand connecte
+
+Signin : etat=false
+    - inscription() :
+        change etat de connexion a true
+    - EventConnected() :
+        affiche formulaire inscription, permet d'afficher la bonne page selon bouton clique  (PagePrincipale, Mur de Tweet)
+
+PagePrincipale : etat=false
+    - connection() :
+        change etat du bouton connexion a true
+    - inscription() :
+        change etat du bouton inscription a true
+    - EventConnected() :
+        permet d'afficher la bonne page selon le bouton clique (Login ou Signin)
+
+NavigationPannel : etat=false
+    A supprimer ? Inutile ?
+
+Utilisateur : etat=true
+
+Message : etat=true
+
+ListeMessage : etat=true
+
+Actualites : etat=true
