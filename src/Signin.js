@@ -16,6 +16,7 @@ class Signin extends Component{
         this.setState({Pseudo : "Pseudo",connexion : true});
         return this.state;
       }
+
     annulation() {
         this.setState({Pseudo : "Pseudo",connexion : false});
         return (<div className = "Actualites">
@@ -36,7 +37,7 @@ class Signin extends Component{
                         <label>Mot de Passe </label><input type = "password"></input><br/>
                         <button type="buttonI" onClick={()=>this.inscription()}>Inscription</button>
                         <b>
-                            <button type="buttonA" onClick={()=>this.annulation()}>Annuler</button>
+                            <button type="buttonA" onClick={()=>this.annulation()}>X</button>
                         </b>
                 </fieldset>
             </form>)

@@ -18,6 +18,9 @@ class Login extends Component{
             <label>Login </label><input type = "text"></input>
             <label>Mot de Passe </label><input type = "password"></input>
             <button type="buttonI" onClick={()=>this.connexion()}>Connexion</button>
+            <b>
+                <button type="buttonA" onClick={()=>this.annulation()}>X</button>
+            </b>
         </form>)
     }
 
