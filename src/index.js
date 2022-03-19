@@ -6,6 +6,7 @@ import Logout from './Logout';
 import Login from './Login';
 import Signin from './Signin';
 import Message from './Message';
+import FormAddMessage from './FormAddMessage';
 import ListeMessage from './ListeMessage';
 import PagePrincipale from './PagePrincipale';
 import Utilisateur from './Utilisateur';
