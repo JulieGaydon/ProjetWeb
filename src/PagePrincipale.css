@@ -1,0 +1,51 @@
+/*body{
+    overflow-x: hidden;
+    overflow-y: hidden;
+    color: whitesmoke;
+    font-family: Arial, sans-serif;
+    background-image:url(./fond2.jpeg);
+    background-position:center center;
+}
+
+fieldset{
+    /config de la boite/
+    box-sizing: border-box;
+    background-color:black;
+    opacity: 0.9;
+    border-radius: 20px;
+    border: none;;
+    width: 700px;
+    height: 300px;
+    padding: 10px;
+    /met la boite au centre de la page/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    /met les boites les une au dessus des autres/
+    display:grid;
+}
+img{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+b{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    flex-wrap: nowrap;
+    /justify-content:space-between;/
+    justify-content: center;
+}
+
+button{
+    border-radius: 15px;
+    background-color:royalblue;
+    transition-duration: 176ms;
+    border: none;
+    padding: 10px;
+    /type de l'ecriture/
+    font-family: Arial, sans-serif;
+    font-size: 40px; 
+}*/

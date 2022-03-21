@@ -11,11 +11,12 @@ import PagePrincipale from './PagePrincipale';
 import Utilisateur from './Utilisateur';
 import * as serviceWorker from './serviceWorker';
 
-//  ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
+ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
 //  ReactDOM.render(<Utilisateur/>, document.getElementById('root'));
- ReactDOM.render(<Message/>, document.getElementById('root'));
+//  ReactDOM.render(<Message/>, document.getElementById('root'));
 //  ReactDOM.render(<ListeMessage/>, document.getElementById('root'));
-// ReactDOM.render(<Logout />, document.getElementById('root'));
+//  ReactDOM.render(<Login />, document.getElementById('root'));
+//ReactDOM.render(<Signin />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

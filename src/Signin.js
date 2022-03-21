@@ -28,17 +28,17 @@ class Signin extends Component{
         return(
             //a rajouter : date de naissance, confirmation mdp, photo, centres interets
             <form>
-                <fieldset>
+                <b>
+                    <button type="buttonA" onClick={()=>this.annulation()}>X</button>
                     <legend>Inscription</legend>
-                        <label>Nom </label><input type = "text"></input><br/>
-                        <label>Prénom </label><input type = "text"></input><br/>
-                        <label>Pseudo </label><input type = "text" id = "pseudo"></input><br/>
-                        <label>Adresse Mail </label><input type = "email"></input><br/>
-                        <label>Mot de Passe </label><input type = "password"></input><br/>
-                        <button type="buttonI" onClick={()=>this.inscription()}>Inscription</button>
-                        <b>
-                            <button type="buttonA" onClick={()=>this.annulation()}>X</button>
-                        </b>
+                </b>
+                <fieldset>
+                    <label>Nom </label><input type = "text"></input><br/>
+                    <label>Prénom </label><input type = "text"></input><br/>
+                    <label>Pseudo </label><input type = "text" id = "pseudo"></input><br/>
+                    <label>Adresse Mail </label><input type = "email"></input><br/>
+                    <label>Mot de Passe </label><input type = "password"></input><br/>
+                    <button type="buttonI" onClick={()=>this.inscription()}>Inscription</button>
                 </fieldset>
             </form>)
     }

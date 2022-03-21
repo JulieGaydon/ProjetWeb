@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Actualites from './Actualites';
 import PagePrincipale from './PagePrincipale';
+import "./Login.css";
 
 
 class Login extends Component{
@@ -22,14 +23,19 @@ class Login extends Component{
     }
 
     EventConnected() {      
-        return(<form>
-            <label>Login </label><input type = "text"></input>
-            <label>Mot de Passe </label><input type = "password"></input>
-            <button type="buttonI" onClick={()=>this.connexion()}>Connexion</button>
+        return(
+        <form>
             <b>
                 <button type="buttonA" onClick={()=>this.annulation()}>X</button>
+                <img src="papillonLogo.svg"/>
             </b>
-        </form>)
+            <fieldset>
+                <label>USERNAME / MAIL</label><input type = "text"></input>   
+                <label>PASSWORD</label><input type = "password"></input>
+                <button type="buttonI" onClick={()=>this.connexion()}>Connexion</button>
+            </fieldset>
+        </form>
+        )
     }
 
     render(){

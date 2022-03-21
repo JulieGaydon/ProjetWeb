@@ -6,7 +6,6 @@
     background-image:url(./fond2.jpeg);
     background-position:center center;
 }
-
 form{
     config de la boite
     box-sizing: border-box;
@@ -14,15 +13,24 @@ form{
     opacity: 0.9;
     border-radius: 20px;
     width: 700px;
-    height: 650px;
+    height: 500px;
     padding: 10px;
     met la boite au centre de la page
     margin-left: auto;
     margin-right: auto;
-    margin-top: 70px;
+    margin-top: 150px;
     met les boites les une au dessus des autres
-    display:grid;
+    display: grid;
 }
+
+b{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: border-box;
+
+}
+
 
 fieldset{
     width: border-box;
@@ -36,7 +44,7 @@ label{
     font-family: Arial, sans-serif;
     font-size: 25px; 
 }
-   
+
 input{
     height: 40px;
     border-radius: 2px;
@@ -50,46 +58,7 @@ button{
     transition-duration: 176ms;
     border: none;
     padding: 10px;
-    type de l'ecriture
+     type de l'ecriture
     font-family: Arial, sans-serif;
     font-size: 20px; 
-}
-
-b{
-    A modifier
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: border-box;
-    flex-wrap: nowrap;
-    justify-content:flex-start;
-    display: inline-flex;
-}
-
-
-legend {
-    text-align: center;
-    color :aliceblue;
-    font-weight: bold;
-    font-variant:small-caps;
-  }
-
-
-*/
-/*button{
-     background-color:rgb(103, 141, 141);   
-    color:black;
-    font-family: Arial, sans-serif;
-    font-size: 15 px; 
-    margin-top: 10px; 
-    margin-left: 220px; 
-}*/
-
-/*b{
-     background-color:rgb(103, 141, 141);   
-    color:red;
-    font-family: Arial, sans-serif;
-    font-size: 15 px; 
-     margin-top: 100px; 
-    margin-left: 220px;  
 }*/

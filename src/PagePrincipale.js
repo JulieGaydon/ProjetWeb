@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Signin from './Signin';
 import Login from './Login';
+import "./PagePrincipale.css";
 
 class PagePrincipale extends Component{
     constructor(props){
@@ -22,8 +23,13 @@ class PagePrincipale extends Component{
 
     EventConnected() {      
         return <>   
-            <button type="buttonC" onClick={()=>this.connection()}>Connexion</button>     
-            <button type="buttonI" onClick={()=>this.inscription()}>Inscription</button>
+            <fieldset>
+                <img src="papillonLogo.svg"/>
+                <b>
+                    <button type="buttonC" onClick={()=>this.connection()}>Connexion</button>     
+                    <button type="buttonI" onClick={()=>this.inscription()}>Inscription</button>
+                </b>
+            </fieldset>
             </>; 
     }
 
