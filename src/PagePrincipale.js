@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Signin from './Signin';
-import Login from './Login';
+import Inscription from './Inscription';
+import Connexion from './Connexion';
 import "./PagePrincipale.css";
 
 class PagePrincipale extends Component{
@@ -12,12 +12,12 @@ class PagePrincipale extends Component{
     }
 
     connection(){
-        this.setState({pageCourante : "Login",cliqueC : true,cliqueI : false});
+        this.setState({pageCourante : "Connexion",cliqueC : true,cliqueI : false});
         return this.state;
     }
 
     inscription(){
-        this.setState({pageCourante : "Signin",cliqueI : true,cliqueC : false}); 
+        this.setState({pageCourante : "Inscription",cliqueI : true,cliqueC : false}); 
         return this.state;
     }
 
@@ -38,13 +38,13 @@ class PagePrincipale extends Component{
             return this.EventConnected()
         }
         if(this.state.cliqueC === true){
-            return (<div className = "Login">
-                {<Login/>}
+            return (<div className = "Connexion">
+                {<Connexion/>}
             </div>);
         }
         if(this.state.cliqueI === true){
-            return (<div className = "Signin">
-                {<Signin/>}
+            return (<div className = "Inscription">
+                {<Inscription/>}
             </div>);
         }
     }

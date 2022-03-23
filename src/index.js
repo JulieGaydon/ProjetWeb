@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Logout from './Logout';
-import Login from './Login';
-import Signin from './Signin';
+import Inscription from './Inscription';
+import Connexion from './Connexion';
 import Message from './Message';
 import FormAddMessage from './FormAddMessage';
 import ListeMessage from './ListeMessage';
 import PagePrincipale from './PagePrincipale';
-import Utilisateur from './Utilisateur';
+import Profil from './Profil';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
-//  ReactDOM.render(<Utilisateur/>, document.getElementById('root'));
+//  ReactDOM.render(<Profil/>, document.getElementById('root'));
 //  ReactDOM.render(<Message/>, document.getElementById('root'));
 //  ReactDOM.render(<ListeMessage/>, document.getElementById('root'));
-//  ReactDOM.render(<Login />, document.getElementById('root'));
-//ReactDOM.render(<Signin />, document.getElementById('root'));
+//  ReactDOM.render(<Connexion />, document.getElementById('root'));
+//ReactDOM.render(<Inscription />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

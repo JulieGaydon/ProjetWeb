@@ -1,4 +1,4 @@
-/*body{
+body{
     overflow-x: hidden;
     overflow-y: hidden;
     color: whitesmoke;
@@ -8,7 +8,7 @@
 }
 
 fieldset{
-    /config de la boite/
+    /* /config de la boite/ */
     box-sizing: border-box;
     background-color:black;
     opacity: 0.9;
@@ -17,11 +17,11 @@ fieldset{
     width: 700px;
     height: 300px;
     padding: 10px;
-    /met la boite au centre de la page/
+    /* /met la boite au centre de la page/ */
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
-    /met les boites les une au dessus des autres/
+    /* /met les boites les une au dessus des autres/ */
     display:grid;
 }
 img{
@@ -35,7 +35,7 @@ b{
     margin-right: auto;
     margin-top: 10px;
     flex-wrap: nowrap;
-    /justify-content:space-between;/
+    /* /justify-content:space-between;/ */
     justify-content: center;
 }
 
@@ -45,7 +45,7 @@ button{
     transition-duration: 176ms;
     border: none;
     padding: 10px;
-    /type de l'ecriture/
+    /* /type de l'ecriture/ */
     font-family: Arial, sans-serif;
     font-size: 40px; 
-}*/
+}

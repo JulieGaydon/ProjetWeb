@@ -1,26 +1,28 @@
-Components :
-- PagePrincipale
-- Login
-- Logout
-- Actualités
-- Signin
-- Actualités
-- Message
-- ListeMessage
-- Utilisateur
+--- Compte Rendu Mi-Projet ---
 
-Login : etat=false
+Components :
+    - PagePrincipale
+    - Connexion
+    - MurDeTweets
+    - Inscription
+    - Message
+    - ListeMessage
+    - Utilisateur
+    - Logout ?
+
+Connexion : etat=false
     - connexion() :
         change l'etat de connexion en true
+    - annulation :
+        ne modifie pas l'etat, renverra la page precedente (PagePrincipale)
     - EventConnected() :
         permet d'afficher la bonne page selon le bouton clique (PagePrincipale, Mur de Tweet)
 
-Logout : etat=true
-    permet l'affichage du bouton deconnexion lorsqu'on est connecte
-
-Signin : etat=false
+Inscription : etat=false
     - inscription() :
         change etat de connexion a true
+    - annulation() :
+        ne modifie pas l'etat, renverra la page precedente (PagePrincipale)
     - EventConnected() :
         affiche formulaire inscription, permet d'afficher la bonne page selon bouton clique  (PagePrincipale, Mur de Tweet)
 
@@ -30,12 +32,18 @@ PagePrincipale : etat=false
     - inscription() :
         change etat du bouton inscription a true
     - EventConnected() :
-        permet d'afficher la bonne page selon le bouton clique (Login ou Signin)
+        permet d'afficher la bonne page selon le bouton clique (Inscription ou Connexion)
 
-Utilisateur : etat=true
+Profil : etat=true
+    - A faire :
+    Page de Profil del'Utilisateur
+    contiendra les messages ecrit de l'utilisateur, les infos concernant l'utilisateur, bouton pour modifier profil, liste d'amis
 
 Message : etat=true
 
 ListeMessage : etat=true
 
-Actualites : etat=true
+MurDeTweets : etat=true
+    - A faire :
+    Mur de Tweets : compose de messages
+    Fonction logout : affichage d'un bouton de deconnexion revenant a la page principale (etat = false)
