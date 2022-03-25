@@ -11,11 +11,13 @@ import ListeMessage from './ListeMessage';
 import PagePrincipale from './PagePrincipale';
 import Profil from './Profil';
 import * as serviceWorker from './serviceWorker';
+import MurDeTweets from './MurDeTweets';
 
-ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
+// ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
 //  ReactDOM.render(<Profil/>, document.getElementById('root'));
 //  ReactDOM.render(<Message/>, document.getElementById('root'));
 //  ReactDOM.render(<ListeMessage/>, document.getElementById('root'));
+ ReactDOM.render(<MurDeTweets/>, document.getElementById('root'));
 //  ReactDOM.render(<Connexion />, document.getElementById('root'));
 //ReactDOM.render(<Inscription />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
+import FormAddMessage from './FormAddMessage';
+import ListeMessage from './ListeMessage';
 
-class Actualites extends Component{
+class MurDeTweets extends Component{
     constructor(props){
         super(props);
+        // props.addMessage({m : "TestMessage"})
+        this.processNewMessage= this.processNewMessage.bind(this)
+    }
+
+    processNewMessage(m){
+        this.setState((state)=>{state.ListeM.push(m);
+        return state;})
     }
 
     render(){
-        return(<div>
-            <p>Mur de Tweets</p>
-            {/* liste Messsage
-            boite Ecriture Message
-            bouton Filtre Message
-            Logo
-            Encadre avec : photo, statut, deconnexion, bouton pour aller sur page user */}
+        return(<div className='MurDeTweets'>
+            <ListeMessage ListeM />
+            <FormAddMessage addMessage={this.processNewMessage}/>
         </div>)
     }
 }
 
-export default Actualites;
+export default MurDeTweets;

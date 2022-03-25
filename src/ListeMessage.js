@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
+import FormAddMessage from './FormAddMessage';
 import Message from './Message'
-
-// const ListeMessage = ({Lmessages})
-//     =>(
-//         <div className = 'ListeMessage'>
-//             {Lmessages.maps(Message =>( 
-//                 <Message message = {Message}/>
-//             ))}
-//         </div>
-//     )
 
 class ListeMessage extends Component{
     constructor(props){
         super(props);
-        this.setState({Message : [{message : "Hello"},{message : "How are you"}]})
+        // this.state = {ListeM : [{mess : "Hello"},{mess : "How are you"}]}
+        this.state = {ListeM : ["Hello","How are you"]}
+        // this.setState(this.ListM = props.mess)
+    }
+
+    componentWillReceiveProps(nextprops){
+        this.setState(this.ListeM = nextprops.ListeM)
+    }
+
+    addMessage(ms){
+        this.setState(this.ListeM = this.ListeM.add(ms))
     }
 
     render(){
         return(<div className = "ListeMessage">
-            {Message.map(Message => (
-                <Message Message = {Message}/>)
-            )}
+            {/* { this.state.ListeM.map((mess) => {return <Message m = {Message.mess}/>}
+            )} */}
+            {this.state.ListeM.map(m => (
+                <li key={m}>{m}</li>
+            ))}
         </div>)
     }
 }
