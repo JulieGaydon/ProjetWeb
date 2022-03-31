@@ -6,10 +6,9 @@ class Logout extends Component{
     }
 
     render(){
-        return(<div>
-            <button type = "button">Deconnexion</button>
-        </div>)
-    }
+        return(
+            <button type="buttonD" onClick={()=>this.props.CallBackChangeEtat(false)}>Deconnexion</button>     
+        )}
 }
 
 export default Logout;

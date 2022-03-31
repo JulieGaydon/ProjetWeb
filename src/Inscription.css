@@ -1,94 +1,68 @@
-body{
-    overflow-x: hidden;
-    overflow-y: hidden;
-    color: whitesmoke;
-    font-family: Arial, sans-serif;
-    background-image:url(./fond2.jpeg);
-    background-position:center center;
-}
-
-form{
-    /* config de la boite */
-    box-sizing: border-box;
-    background-color:black;
+#annulerI{
+    border-radius: 10px;
+    background-color:rgb(240, 80, 128);
     opacity: 0.9;
-    border-radius: 20px;
-    width: 700px;
-    height: 650px;
-    padding: 10px;
-    /* met la boite au centre de la page */
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 70px;
-    /* met les boites les une au dessus des autres */
-    display:grid;
+    padding: 5px;
+    font-size: 20px;
+    font-size: 25px;
+    margin-right: 650px;
+    margin-left: 2px;
+    margin-top: 5px;
 }
 
-fieldset{
-    width: border-box;
-    height: border-box;
-    border: none;
-    display: grid;
-}
-
-label{
+#labelI{
     text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 25px; 
+    color:rgb(240, 80, 128);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
 }
-   
-input{
+
+#inputI{
     height: 40px;
+    font-size: 25px; 
     border-radius: 2px;
     border: none;
-    background-color:cornsilk;
+    opacity: 0.8;
+    background-color:rgb(253, 251, 249);
+    margin-right: 100px;
+    margin-left: 100px;
 }
 
-button{
+#inscription{
     border-radius: 15px;
-    background-color:royalblue;
+    background-color:rgb(240, 80, 128);
     transition-duration: 176ms;
     border: none;
     padding: 10px;
     /* type de l'ecriture */
-    font-family: Arial, sans-serif;
-    font-size: 20px; 
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
 }
 
-b{
-    /* A modifier */
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: border-box;
-    flex-wrap: nowrap;
-    justify-content:flex-start;
-    display: inline-flex;
+#fieldsetI{
+    /* /config de la boite/ */
+    box-sizing: border-box;
+    background-color:black;
+    opacity: 0.9;
+    border-radius: 20px;
+    border: none;
+    width: 100px;
+    height: 650px;
+    padding: 10px;
+    /* /met la boite au centre de la page/ */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
 }
 
-
-legend {
-    text-align: center;
-    color :aliceblue;
-    font-weight: bold;
-    font-variant:small-caps;
+#titreI{
+    margin-top: -25px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 250%;
+    color: rgb(240, 80, 128);
   }
-
-
-/* /*button{
-     background-color:rgb(103, 141, 141);   
-    color:black;
-    font-family: Arial, sans-serif;
-    font-size: 15 px; 
-    margin-top: 10px; 
-    margin-left: 220px; 
-}*/
-
-/*b{
-     background-color:rgb(103, 141, 141);   
-    color:red;
-    font-family: Arial, sans-serif;
-    font-size: 15 px; 
-     margin-top: 100px; 
-    margin-left: 220px;  
-} */

@@ -10,14 +10,9 @@ class Connexion extends Component{
         this.state = {connexion : false};
     }
 
-    connexion() {
-        this.setState({Pseudo : "Pseudo",connexion : true});
-        return this.state;
-    }
-
     annulation() {
-        this.setState({Pseudo : "Pseudo",connexion : false});
-        return (<div className = "MurDeTweets">
+        this.props.CallBackChangeEtat(false)
+        return (<div className = "PagePrincipale">
             {<PagePrincipale/>}
         </div>);
     }
@@ -25,14 +20,12 @@ class Connexion extends Component{
     EventConnected() {      
         return(
         <form>
-            <b>
-                <button type="buttonA" onClick={()=>this.annulation()}>X</button>
-                <img src="papillonLogo.svg"/>
-            </b>
             <fieldset>
-                <label>USERNAME / MAIL</label><input type = "text"></input>   
-                <label>PASSWORD</label><input type = "password"></input>
-                <button type="buttonI" onClick={()=>this.connexion()}>Connexion</button>
+                <button type="button" id = "annuler" onClick={()=>this.annulation()}>X</button>
+                <img src="papillonLogo.svg"/>
+                <label id = "labelC">USERNAME / MAIL</label><input id="inputC" type = "text"></input>   
+                <label id = "labelC">PASSWORD</label><input id="inputC" type = "password"></input>
+                <button type="button" id = "connexion" onClick={() => this.props.CallBackChangeEtat(true)}>Connexion</button>
             </fieldset>
         </form>
         )
@@ -41,11 +34,6 @@ class Connexion extends Component{
     render(){
         if(this.state.connexion === false){
             return this.EventConnected()
-        }
-        if(this.state.connexion === true){
-            return (<div className = "MurDeTweets">
-                {<MurDeTweets/>}
-            </div>);
         }
     }
 }

@@ -1,20 +1,28 @@
 --- Compte Rendu Mi-Projet ---
 
 Components :
-    - PagePrincipale
-    - Connexion
-    - MurDeTweets
-    - Inscription
-    - Message
-    - ListeMessage
-    - Utilisateur
-    - Logout ?
+    - PagePrincipale 
+    - Connexion 
+    - MurDeTweets .
+    - Inscription 
+    - FormAddMessage 
+    - ListeMessage 
+    - Profil 
+    - Deconnexion 
+    - ListeAmis 
+    - FormAddFriend 
 
 Connexion : etat=false
     - connexion() :
         change l'etat de connexion en true
     - annulation :
         ne modifie pas l'etat, renverra la page precedente (PagePrincipale)
+    - EventConnected() :
+        permet d'afficher la bonne page selon le bouton clique (PagePrincipale, Mur de Tweet)
+
+Deconnexion : etat=true
+    -deconnexion():
+        change l'etat de connexion en false pour revenir a la page principale
     - EventConnected() :
         permet d'afficher la bonne page selon le bouton clique (PagePrincipale, Mur de Tweet)
 
@@ -35,15 +43,42 @@ PagePrincipale : etat=false
         permet d'afficher la bonne page selon le bouton clique (Inscription ou Connexion)
 
 Profil : etat=true
-    - A faire :
+    - modifier():
+        si bouton clique permet de modifier les informations du profil de l'utilisateur qui est connecté
+    -retour():
+        ne modifie pas l'etat, renverra la page precedente (MurDeTweets)
     Page de Profil del'Utilisateur
-    contiendra les messages ecrit de l'utilisateur, les infos concernant l'utilisateur, bouton pour modifier profil, liste d'amis
+    contiendra les messages ecrit de l'utilisateur, les infos concernant l'utilisateur, liste d'amis, un bouton pour modifier les informations, un bouton pour ajouter un ami
+    contient les composants ListeAmis, FormAddFriends
 
-Message : etat=true
+FormAddFriend : etat = true
+    C'est un component de Profil
+    - ajoute() :
+        appel addAmi pour ajouter le profil a la liste de d'amis de l'utilisateur
+
+ListeAmis : etat = true
+    C'est un component de Profil
+    contients la liste des amis de l'utilisateur 
+    addAmi() :
+        ajoute a la liste 
 
 ListeMessage : etat=true
+    C'est un Component de MurDeTweets
+    contient la liste des messages ecrits par FormAddMessage
+    addMessage() :
+        ajoute a la liste
+    
+
+FormAddMessage : etat=true
+    C'est un componant de MurDeTweets
+    - send() :
+        appel addMessage pour ajouter le message a la liste de messages
 
 MurDeTweets : etat=true
-    - A faire :
     Mur de Tweets : compose de messages
-    Fonction logout : affichage d'un bouton de deconnexion revenant a la page principale (etat = false)
+
+    contient les components ListeMessage et FormAddMessage
+    - pageUtilisateur():
+        permet d'afficher le Profil si bouton clique 
+
+    

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class Message extends Component{
     constructor(props){
         super(props);
-        props = {m : "unMessage"}
         this.state = {m : props.m}
     }
 
@@ -13,6 +12,11 @@ class Message extends Component{
 
     render(){
         return(<div className='Message' onClick = {()=> this.handleMessageClick()}>{this.props.m}
+            <tr>
+                <td>date</td>
+                <td>Pseudo</td>
+                <td>Message</td>
+            </tr>
         </div>)
     }
 }
