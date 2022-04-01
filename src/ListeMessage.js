@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormAddMessage from './FormAddMessage';
-import Message from './Message'
+import Message from './Message';
+import './ListeMessage.css';
 
 class ListeMessage extends Component{
     constructor(props){
@@ -16,7 +17,9 @@ class ListeMessage extends Component{
 
     render(){
         return(<div className = "ListeMessage">
-            <p>Liste des Messages</p>
+            <fieldset>
+                <h2 id = "Lmessage">Messages</h2>
+            </fieldset>
         </div>)
     }
 }

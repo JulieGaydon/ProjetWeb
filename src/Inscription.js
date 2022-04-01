@@ -30,6 +30,7 @@ class Inscription extends Component{
                     <label id = "labelI">Adresse Mail </label><input id = "inputI" type = "email"></input><br/>
                     <label id = "labelI">Pseudo </label><input id = "inputI" type = "text"></input><br/>
                     <label id = "labelI">Mot de Passe </label><input id = "inputI" type = "password"></input><br/>
+                    <label id = "labelI">Confirmer Mot de Passe </label><input id = "inputI" type = "password"></input><br/>
                     <button type="button" id = "inscription" onClick={()=>this.props.CallBackChangeEtat(true)}>Inscription</button>
                 </fieldset>
             </form>)

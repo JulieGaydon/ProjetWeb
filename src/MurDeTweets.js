@@ -3,6 +3,7 @@ import FormAddMessage from './FormAddMessage';
 import ListeMessage from './ListeMessage';
 import Profil from './Profil';
 import Logout from './Logout';
+import './MurDeTweets.css';
 
 class MurDeTweets extends Component{
     constructor(props){
@@ -41,13 +42,17 @@ class MurDeTweets extends Component{
             </div>);
         }
         else{
-            return(<div className='MurDeTweets'>
-                <ListeMessage ListeM />
-                <button type="button" onClick={()=>this.ecrireMessage(true)}>addMessage</button>
-
-                <Logout CallBackChangeEtat = {this.props.CallBackChangeEtat} />
-                <button type="button" onClick={()=>this.afficheProfil()}>Profil</button>
-            </div>)
+            return(
+                <fieldset id = "profil">
+                    <div className='MurDeTweets'>
+                        <button type="button" id = "bouttonMdT" onClick={()=>this.afficheProfil()}>Profil</button>
+                        <button type="button" id = "bouttonMdT" onClick={()=>this.ecrireMessage(true)}>addMessage</button>
+                        <Logout CallBackChangeEtat = {this.props.CallBackChangeEtat} />
+                    </div>
+                    <div>
+                        <ListeMessage ListeM />
+                    </div>
+                </fieldset>)
         }
     }
 }

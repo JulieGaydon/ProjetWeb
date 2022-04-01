@@ -1,0 +1,13 @@
+#bouttonProfil{
+        border-radius: 15px;
+        background-color:rgb(66, 224, 230);
+        transition-duration: 176ms;
+        border: none;
+        padding: 10px;
+        /* type de l'ecriture */
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 20px;
+        margin-right: 30px;
+        margin-left: 45px;
+        margin-top: 20px;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Logout.css';
 
 class Logout extends Component{
     constructor(props){
@@ -7,7 +8,7 @@ class Logout extends Component{
 
     render(){
         return(
-            <button type="buttonD" onClick={()=>this.props.CallBackChangeEtat(false)}>Deconnexion</button>     
+            <button type="button" id="Blogout" onClick={()=>this.props.CallBackChangeEtat(false)}>Deconnexion</button>     
         )}
 }
 

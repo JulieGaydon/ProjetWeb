@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListeMessage from './ListeMessage';
-import MurDeTweets from './MurDeTweets';
-
+import MurDeTweetsF from './MurDeTweets';
+import './FormAddMessage.css';
 
 class FormAddMessage extends Component{
 
@@ -25,10 +25,12 @@ class FormAddMessage extends Component{
     
     render(){
         return (<form className = "FormAddMessage">
-            <label>message </label><input type = "text" ref = "message"></input>
-            {/* <button className = "button" onClick = {()=>this.send()}>Publier</button> */}
-            <button className = "button" onClick ={() => this.props.CallBackEcrireMessage(false)}>X</button>
-            <button className = "button" onClick ={() => this.publierM()}>Publier</button>
+            <fieldset>
+                <button className = "button" id = "annulerM" onClick ={() => this.props.CallBackEcrireMessage(false)}>X</button>
+                <label id = "LabelM">Message </label><input type = "text" id = "inputM" ref = "message"></input>
+                {/* <button className = "button" onClick = {()=>this.send()}>Publier</button> */}
+                <button className = "button" id = "publierM" onClick ={() => this.publierM()}>Publier</button>
+            </fieldset>
         </form>
         )
     }
