@@ -1,13 +1,14 @@
 #Blogout{
     border-radius: 15px;
-    background-color:rgb(66, 224, 230);
+    background-color:rgb(2, 7, 39);
     transition-duration: 176ms;
+    color : white;
     border: none;
     padding: 10px;
     /* type de l'ecriture */
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
     margin-bottom: 10px;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin-right: 5em;
+    margin-left: 5em;
 }

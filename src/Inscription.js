@@ -22,15 +22,16 @@ class Inscription extends Component{
         return(
             //a rajouter : date de naissance, confirmation mdp, photo, centres interets
             <form>
-                <fieldset id = "fieldsetI">
-                    <button type="button" id = "annulerI" onClick={()=>this.annulation()}>X</button>
-                    <h2 id = "titreI">Inscription</h2>
-                    <label id = "labelI">Nom </label><input type = "text" id = "inputI" ></input><br/>
-                    <label id = "labelI">Prénom </label><input type = "text" id = "inputI" ></input><br/>
-                    <label id = "labelI">Adresse Mail </label><input id = "inputI" type = "email"></input><br/>
-                    <label id = "labelI">Pseudo </label><input id = "inputI" type = "text"></input><br/>
-                    <label id = "labelI">Mot de Passe </label><input id = "inputI" type = "password"></input><br/>
-                    <label id = "labelI">Confirmer Mot de Passe </label><input id = "inputI" type = "password"></input><br/>
+                 <h1 id = "PPtitre">ButterFly</h1>
+                <fieldset id = "principal">
+                    <button type="button" id = "annuler" onClick={()=>this.annulation()}>X</button>
+                    <h2 id="titreI" >Inscription</h2>
+                    <input type = "text" id = "inputI" placeholder='Nom'></input><br/>
+                    <input type = "text" id = "inputI" placeholder= "Prénom"></input><br/>
+                    <input id = "inputI" type = "email" placeholder="Adresse Mail/pseudo" ></input><br/>
+                    <input id = "inputI" type = "text" placeholder= "Pseudo"></input><br/>
+                    <input id = "inputI" type = "password" placeholder="Mot de Passe "></input><br/>
+                    <input id = "inputI" type = "password" placeholder="Confirmer Mot de Passe" ></input><br/>
                     <button type="button" id = "inscription" onClick={()=>this.props.CallBackChangeEtat(true)}>Inscription</button>
                 </fieldset>
             </form>)

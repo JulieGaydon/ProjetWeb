@@ -20,8 +20,8 @@ class MurDeTweets extends Component{
         return state;})
     }
 
-    afficheProfil(){
-        this.setState({afficheP : true});
+    afficheProfil(value){
+        this.setState({afficheP : value});
         return this.state;
     }
 
@@ -33,7 +33,7 @@ class MurDeTweets extends Component{
     render(){
         if(this.state.afficheP === true){
             return (<div className = "Profil">
-                {<Profil CallBackChangeEtat = {this.props.CallBackChangeEtat}/>}
+                {<Profil CallBackChangeEtat = {this.props.CallBackChangeEtat} CallBackAfficheProfil = {this.afficheProfil}/>}
             </div>);
         }
         if(this.state.ecrireM === true){
@@ -43,16 +43,19 @@ class MurDeTweets extends Component{
         }
         else{
             return(
+                <div>
                 <fieldset id = "profil">
                     <div className='MurDeTweets'>
-                        <button type="button" id = "bouttonMdT" onClick={()=>this.afficheProfil()}>Profil</button>
-                        <button type="button" id = "bouttonMdT" onClick={()=>this.ecrireMessage(true)}>addMessage</button>
+                        <button type="button" id = "bouttonMdT" onClick={()=>this.afficheProfil(true)}>Profil</button>
+                        <button type="button" id = "bouttonMdT" onClick={()=>this.ecrireMessage(true)}>Ecrire un message</button>
                         <Logout CallBackChangeEtat = {this.props.CallBackChangeEtat} />
                     </div>
-                    <div>
-                        <ListeMessage ListeM />
-                    </div>
-                </fieldset>)
+                </fieldset>
+                <div>
+                    <ListeMessage ListeM />
+                </div>
+                </div>
+                )
         }
     }
 }

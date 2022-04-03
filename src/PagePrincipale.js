@@ -3,6 +3,7 @@ import Inscription from './Inscription';
 import Connexion from './Connexion';
 import "./PagePrincipale.css";
 import MurDeTweets from './MurDeTweets';
+import PageInaccessible from './PageInaccessible';
 
 class PagePrincipale extends Component{
     constructor(props){
@@ -11,6 +12,7 @@ class PagePrincipale extends Component{
         this.connection = this.connection.bind(this);
         this.inscription = this.inscription.bind(this);
         this.changeEtat = this.changeEtat.bind(this);
+        this.annulation = this.annulation.bind(this);
 
     }
 
@@ -28,12 +30,19 @@ class PagePrincipale extends Component{
         this.setState({pageCourante : "Inscription",cliqueI : true,cliqueC : false}); 
         return this.state;
     }
+    
+    annulation(value){
+        this.setState({pageCourante : value,cliqueI : false,cliqueC : false}); 
+        return this.state;
+    }
 
     EventConnected() {      
         return <>
-            <fieldset>
-                <h1 id = "PPtitre">Nom du Site</h1>
-                <img src="papillonLogo.svg"/>
+            <h1 id = "PPtitre">ButterFly</h1>
+            <fieldset id = "principal">
+                {/* creer fonction anuler !! */}
+                <button type="button" id = "annuler" onClick={()=>this.annulation("PageInaccessible")}>X</button>
+                <img src="papillon.jpg"/>
                 <button type="button" id = "bouttonPP" onClick={()=>this.connection()}>Connexion</button>     
                 <button type="button" id = "bouttonPP" onClick={()=>this.inscription()}>Inscription</button>
             </fieldset>
@@ -41,6 +50,11 @@ class PagePrincipale extends Component{
     }
 
     render(){
+        if(this.state.pageCourante === "PageInaccessible"){
+            return (<div className = "PageInaccessible">
+                {<PageInaccessible CallBackAnnulation= {this.annulation}/>}
+            </div>);
+        }
         if(this.state.connexion === true){
             return (<div className = "MurDeTweets">
                 {<MurDeTweets CallBackChangeEtat = {this.changeEtat}/>}

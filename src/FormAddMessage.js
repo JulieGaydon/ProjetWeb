@@ -7,14 +7,8 @@ class FormAddMessage extends Component{
 
     constructor(props){
         super(props);
+        this.state = {message : ""}
     }
-
-    // send(){
-    //     var data_to_send = {
-    //         mess : this.ref.message.value
-    //     }
-    //     this.props.addMessage(data_to_send);
-    // }
 
     publierM(value){
         // fonction ajout message a base de donnees
@@ -25,13 +19,13 @@ class FormAddMessage extends Component{
     
     render(){
         return (<form className = "FormAddMessage">
-            <fieldset>
-                <button className = "button" id = "annulerM" onClick ={() => this.props.CallBackEcrireMessage(false)}>X</button>
-                <label id = "LabelM">Message </label><input type = "text" id = "inputM" ref = "message"></input>
-                {/* <button className = "button" onClick = {()=>this.send()}>Publier</button> */}
-                <button className = "button" id = "publierM" onClick ={() => this.publierM()}>Publier</button>
-            </fieldset>
-        </form>
+                    <button className = "button" id = "annuler" onClick ={() => this.props.CallBackEcrireMessage(false)}>X</button>
+                    <div id="message">
+                        <label id = "LabelM">Message </label><input type = "text" id = "inputM" ref = "message" placeholder='Ecrire votre message'></input>
+                        {/* <button className = "button" onClick = {()=>this.send()}>Publier</button> */}
+                        <button className = "button" id = "publierM" onClick ={() => this.publierM()}>Publier</button>
+                    </div>
+                </form>
         )
     }
 

@@ -9,13 +9,14 @@ class Utilisateur extends Component{
     }
 
     render(){
-        return(<div>
+        return(<fieldset id = "profil">
+                <button type="button" id = "bouttonProfil" onClick={()=>this.props.CallBackAfficheProfil(false)}>Mur de Tweets</button>
                 <button type = "button" id = "bouttonProfil">Modifier</button>
                 <button type = "button" id = "bouttonProfil">Abonnement</button>
                 <button type = "button" id = "bouttonProfil">Abonnes</button>
                 <Logout CallBackChangeEtat = {this.props.CallBackChangeEtat}/>
             <ListeMessage/>
-        </div>)
+        </fieldset>)
     }
 }
 

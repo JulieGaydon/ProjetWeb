@@ -17,9 +17,9 @@ class ListeMessage extends Component{
 
     render(){
         return(<div className = "ListeMessage">
-            <fieldset>
+            <div>
                 <h2 id = "Lmessage">Messages</h2>
-            </fieldset>
+            </div>
         </div>)
     }
 }
