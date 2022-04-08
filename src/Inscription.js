@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Profil from './Profil';
 import './Inscription.css';
 import MurDeTweets from './MurDeTweets';
@@ -17,6 +18,7 @@ class Inscription extends Component{
             {<PagePrincipale/>}
         </div>);
         }
+
 
      EventConnected() {      
         return(

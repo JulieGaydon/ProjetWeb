@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import MurDeTweets from './MurDeTweets';
 import PagePrincipale from './PagePrincipale';
 import "./Connexion.css";
-
 
 class Connexion extends Component{
     constructor(props){
@@ -17,6 +17,18 @@ class Connexion extends Component{
         </div>);
     }
 
+    // componentDidMount(){
+    //     const instance = axios.create({
+    //         baseURL: 'http://localhost:4000/',
+    //         timeout: 1000,
+    //         headers: {'X-Custom-Header': 'foobar'}
+    //       });
+    //       console.log("coucou");
+    //       instance.get('api/user/1').then(res=>{
+    //         console.log(res);
+    //     })
+    // }
+
     EventConnected() {      
         return(
         <form>
@@ -27,6 +39,7 @@ class Connexion extends Component{
                 <input id="inputC" type = "text" placeholder='UserName'></input>   
                 <input id="inputC" type = "password" placeholder='Password'></input>
                 <button type="button" id = "connexion" onClick={() => this.props.CallBackChangeEtat(true)}>Connexion</button>
+                {/* <button type="button" id = "connexion" onClick={this.componentDidMount}>Connexion</button> */}
             </fieldset>
         </form>
         )
