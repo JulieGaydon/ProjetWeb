@@ -17,14 +17,16 @@ class Users {
         prenom: Prenom,
         adresseM: AdresseM,
      };
-      db.user.insert(user);
-      (err,docs) => {
+     db.user.insert(user);
+     db.user.find({nom : Nom},{_id : 1},(err, docs)=>{
         if(err){
-            reject(err);
+          console.log("erreur")
+          reject(err);
         }else{
-            resolve(docs[0]._id);
+          console.log("ok")
+          resolve(docs[0]._id);
         }
-      };
+        })
     });
   }
 
@@ -42,7 +44,12 @@ class Users {
   
   async exists(login) {
     return new Promise((resolve, reject) => {
-      db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{ 
+      db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{
+        // if(null){
+        //   reject(err)
+        // }else{
+        //   resolve(docs)
+        // }
         if(docs[0].pseudo === login) {
           console.log("pseudo",docs[0])
           resolve(docs);
@@ -58,6 +65,9 @@ class Users {
     return new Promise((resolve, reject) => {
       db.user.find({pseudo : login},{password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         // let userid = 1; // À remplacer par une requête bd
+        // if(null){
+        //   reject(err)
+        // }
         if(docs[0].password === mdp) {
           console.log("password",docs[0].password)
           resolve(docs);
