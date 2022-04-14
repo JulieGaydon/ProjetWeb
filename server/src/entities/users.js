@@ -30,7 +30,7 @@ class Users {
 
   get(userid) {
     return new Promise((resolve, reject) => {
-      db.user.find({},{nom : 1, prenom : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+      db.user.find({},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         if(userid == 1) {
           resolve(docs);
         } else {
@@ -39,27 +39,31 @@ class Users {
       })
     });
   }
-
+  
   async exists(login) {
     return new Promise((resolve, reject) => {
-      if(false) {
-        //erreur
-        reject();
-      } else {
-        resolve(true);
-      }
+      db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{ 
+        if(err) {
+          //erreur
+          reject(err);
+        } else {
+          resolve(docs);
+        }
+      })
     });
   }
-
-  checkpassword(login, password) {
+  
+  checkpassword(login, mdp) {
     return new Promise((resolve, reject) => {
-      let userid = 1; // À remplacer par une requête bd
-      if(false) {
-        //erreur
-        reject();
-      } else {
-        resolve(userid);
-      }
+      db.user.find({pseudo : login},{password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+        // let userid = 1; // À remplacer par une requête bd
+        if(docs.password === mdp) {
+          resolve(docs);
+        } else {
+          //erreur
+          reject(err);
+        }
+      });
     });
   }
 
