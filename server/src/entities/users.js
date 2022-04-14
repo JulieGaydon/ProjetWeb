@@ -22,7 +22,7 @@ class Users {
         if(err){
             reject(err);
         }else{
-            resolve(docs[0]);
+            resolve(docs[0]._id);
         }
       };
     });
@@ -43,11 +43,12 @@ class Users {
   async exists(login) {
     return new Promise((resolve, reject) => {
       db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{ 
-        if(err) {
+        if(docs[0].pseudo === login) {
+          console.log("pseudo",docs[0])
+          resolve(docs);
+        } else {
           //erreur
           reject(err);
-        } else {
-          resolve(docs);
         }
       })
     });
@@ -57,7 +58,8 @@ class Users {
     return new Promise((resolve, reject) => {
       db.user.find({pseudo : login},{password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         // let userid = 1; // À remplacer par une requête bd
-        if(docs.password === mdp) {
+        if(docs[0].password === mdp) {
+          console.log("password",docs[0].password)
           resolve(docs);
         } else {
           //erreur

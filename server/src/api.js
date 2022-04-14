@@ -24,6 +24,7 @@ function init(db) {
                 });
                 return;
             }
+            console.log("exists");
             if(! await users.exists(login)) {
                 res.status(401).json({
                     status: 401,
@@ -32,6 +33,7 @@ function init(db) {
                 return;
             }
             let userid = await users.checkpassword(login, password);
+            console.log("userid",userid);
             if (userid) {
                 // Avec middleware express-session
                 req.session.regenerate(function (err) {
