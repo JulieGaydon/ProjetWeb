@@ -87,11 +87,11 @@ function init(db) {
         .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
 
     router.put("/user", (req, res) => {
-        const { login, password, lastname, firstname } = req.body;
-        if (!login || !password || !lastname || !firstname) {
+        const { Nom, Prenom, Pseudo, Password , AdresseM } = req.body;
+        if (!Nom || !Prenom || !Pseudo || !Password || !AdresseM) {
             res.status(400).send("Missing fields");
         } else {
-            users.create(login, password, lastname, firstname)
+            users.create(Nom, Prenom, Pseudo, Password , AdresseM)
                 .then((user_id) => res.status(201).send({ id: user_id }))
                 .catch((err) => res.status(500).send(err));
         }

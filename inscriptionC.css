@@ -1,0 +1,30 @@
+label{
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 25px; 
+}
+   
+input{
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+    background-color:cornsilk;
+}
+
+button{
+    border-radius: 15px;
+    background-color:royalblue;
+    transition-duration: 176ms;
+    border: none;
+    padding: 10px;
+    /* type de l'ecriture */
+    font-family: Arial, sans-serif;
+    font-size: 20px; 
+}
+
+legend {
+    text-align: center;
+    color :aliceblue;
+    font-weight: bold;
+    font-variant:small-caps;
+  }

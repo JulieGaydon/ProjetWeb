@@ -20,6 +20,7 @@ app.use(session({
 var Datastore = require('nedb');        
 db = {};
 db.user =  new Datastore();
+// db.user.loadDatabase();
 
 app.use('/api', api.default(db));
 

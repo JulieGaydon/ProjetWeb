@@ -5,54 +5,38 @@ const { bdd } = require("mocha/lib/interfaces");
 class Users {
   constructor(db) {
     this.db = db
-    this.db.user.insert({
-      login: "pikachu",
-      password: "1234",
-      lastname: "chu",
-      firstname: "pika"
-   })
     // suite plus tard avec la BD
   }
-
-  create(login, password, lastname, firstname) {
+  
+  create(Nom, Prenom, Pseudo, Password , AdresseM) {
     return new Promise((resolve, reject) => {
-      let userid = 1; // À remplacer par une requête bd
-      // let user = {
-      //   login : login,
-      //   password : password,
-      //   lastname : lastname,
-      //   firstname : firstname,
-      // };
-      // db.user.insert(user);
-      if(false) {
-        //erreur
-        reject();
-      } else {
-        resolve(userid);
-      }
+      let user = {
+        nom: Nom,
+        password: Password,
+        pseudo: Pseudo,
+        prenom: Prenom,
+        adresseM: AdresseM,
+     };
+      db.user.insert(user);
+      (err,docs) => {
+        if(err){
+            reject(err);
+        }else{
+            resolve(docs[0]);
+        }
+      };
     });
   }
 
   get(userid) {
     return new Promise((resolve, reject) => {
-      
-      const user = {
-         login: "pikachu",
-         password: "1234",
-         lastname: "chuuu",
-         firstname: "pika"
-      }; // À remplacer par une requête bd
-
-      if(false) {
-        //erreur
-        reject();
-      } else {
+      db.user.find({},{nom : 1, prenom : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         if(userid == 1) {
-          resolve(user);
+          resolve(docs);
         } else {
-          resolve(null);
+          reject(err);
         }
-      }
+      })
     });
   }
 
