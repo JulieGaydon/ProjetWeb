@@ -19,9 +19,9 @@ class FormAddMessage extends Component{
     
     render(){
         return (<form className = "FormAddMessage">
-                    <button className = "button" id = "annuler" onClick ={() => this.props.CallBackEcrireMessage(false)}>X</button>
+                    {/* <button className = "button" id = "annuler" onClick ={() => this.props.CallBackEcrireMessage(false)}>X</button>*/}
                     <div id="message">
-                        <label id = "LabelM">Message </label><input type = "text" id = "inputM" ref = "message" placeholder='Ecrire votre message'></input>
+                        <input type = "text" id = "inputM" ref = "message" placeholder='Ecrire un nouveau message'></input>
                         {/* <button className = "button" onClick = {()=>this.send()}>Publier</button> */}
                         <button className = "button" id = "publierM" onClick ={() => this.publierM()}>Publier</button>
                     </div>

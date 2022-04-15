@@ -47,13 +47,14 @@ class MurDeTweets extends Component{
                 <fieldset id = "profil">
                     <div className='MurDeTweets'>
                         <button type="button" id = "bouttonMdT" onClick={()=>this.afficheProfil(true)}>Profil</button>
-                        <button type="button" id = "bouttonMdT" onClick={()=>this.ecrireMessage(true)}>Ecrire un message</button>
+                        <FormAddMessage/>
                         <Logout CallBackChangeEtat = {this.props.CallBackChangeEtat} />
+                        <ListeMessage ListeM />
                     </div>
                 </fieldset>
-                <div>
+                {/* <div>
                     <ListeMessage ListeM />
-                </div>
+                </div> */}
                 </div>
                 )
         }

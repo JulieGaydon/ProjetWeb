@@ -6,8 +6,8 @@
     border: none;
     height: 100px;
     /* /met la boite au centre de la page/ */
-    margin-left: 2%;
-    margin-right: 2%;
+    top: 20px;
+    left: 0px;
 }
 
 #bouttonMdT{

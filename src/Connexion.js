@@ -7,7 +7,11 @@ import "./Connexion.css";
 class Connexion extends Component{
     constructor(props){
         super(props);
-        this.state = {connexion : false};
+        this.state = {nom : "",pseudo : "",connexion : false};
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChangePseudo = this.handleChangePseudo.bind(this);
+        this.handleChangePassword = this.handleChangePassword.bind(this);
+
     }
 
     annulation() {
@@ -17,17 +21,36 @@ class Connexion extends Component{
         </div>);
     }
 
-    // componentDidMount(){
-    //     const instance = axios.create({
-    //         baseURL: 'http://localhost:4000/',
-    //         timeout: 1000,
-    //         headers: {'X-Custom-Header': 'foobar'}
-    //       });
-    //       console.log("coucou");
-    //       instance.get('api/user/1').then(res=>{
-    //         console.log(res);
-    //     })
-    // }
+    handleSubmit(event){
+        const instance = axios.create({
+            baseURL: 'http://localhost:4000/',
+            timeout: 5000,
+            headers: {'X-Custom-Header': 'foobar'}
+          });
+          console.log("coucou");
+          /*alert(this.state.pseudo);
+          alert(this.state.prenom)*/
+
+        instance.get('api/user',{Pseudo : this.state.pseudo,Password : this.state.password})
+        .then(function (response){
+            console.log("resultat",response)
+            this.props.CallBackChangeEtat(true)
+            alert(response)
+        })
+        .catch(function (error){
+            console.log(error)
+            alert("error",error)
+        })
+        alert("apres")
+    }
+
+    handleChangePseudo(event){
+        this.setState({pseudo : event.target.value});
+    }
+
+    handleChangePassword(event){
+        this.setState({password : event.target.value});
+    }
 
     EventConnected() {      
         return(
@@ -36,10 +59,9 @@ class Connexion extends Component{
             <fieldset id = "principal">
                 <button type="button" id = "annuler" onClick={()=>this.annulation()}>X</button>
                 <img src="papillon.jpg"/>
-                <input id="inputC" type = "text" placeholder='UserName'></input>   
-                <input id="inputC" type = "password" placeholder='Password'></input>
+                <input id = "inputC" type = "text" placeholder= "Pseudo" value = {this.state.pseudo} onChange= {this.handleChangePseudo} ></input><br/>
+                <input id = "inputC" type = "text" placeholder= "Password" value = {this.state.password} onChange= {this.handleChangePassword} ></input><br/> 
                 <button type="button" id = "connexion" onClick={() => this.props.CallBackChangeEtat(true)}>Connexion</button>
-                {/* <button type="button" id = "connexion" onClick={this.componentDidMount}>Connexion</button> */}
             </fieldset>
         </form>
         )
