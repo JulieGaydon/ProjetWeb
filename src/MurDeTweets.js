@@ -49,12 +49,11 @@ class MurDeTweets extends Component{
                         <button type="button" id = "bouttonMdT" onClick={()=>this.afficheProfil(true)}>Profil</button>
                         <FormAddMessage/>
                         <Logout CallBackChangeEtat = {this.props.CallBackChangeEtat} />
-                        <ListeMessage ListeM />
                     </div>
                 </fieldset>
-                {/* <div>
+                <div>
                     <ListeMessage ListeM />
-                </div> */}
+                </div>
                 </div>
                 )
         }

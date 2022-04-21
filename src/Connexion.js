@@ -7,11 +7,9 @@ import "./Connexion.css";
 class Connexion extends Component{
     constructor(props){
         super(props);
-        this.state = {nom : "",pseudo : "",connexion : false};
+        this.state = {connexion : false, pseudo : "", mdp : ""};
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangePseudo = this.handleChangePseudo.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
-
+        this.handleChange = this.handleChange.bind(this);
     }
 
     annulation() {
@@ -21,47 +19,45 @@ class Connexion extends Component{
         </div>);
     }
 
-    handleSubmit(event){
+    handleSubmit(){
         const instance = axios.create({
             baseURL: 'http://localhost:4000/',
-            timeout: 5000,
+            timeout: 1000,
             headers: {'X-Custom-Header': 'foobar'}
           });
-          console.log("coucou");
-          /*alert(this.state.pseudo);
-          alert(this.state.prenom)*/
-
-        instance.get('api/user',{Pseudo : this.state.pseudo,Password : this.state.password})
-        .then(function (response){
-            console.log("resultat",response)
-            this.props.CallBackChangeEtat(true)
-            alert(response)
-        })
-        .catch(function (error){
-            console.log(error)
-            alert("error",error)
-        })
-        alert("apres")
+        instance.post('api/user/login',{login : this.state.pseudo, password : this.state.mdp})
+          .then(function (response){
+                console.log("bon mdp")
+                console.log(response)
+                alert(response)
+            })
+            .then(()=>{
+                console.log("changement")
+                this.props.CallBackChangeEtat(true)
+            })
+          .catch(function (error){
+                console.log("mauvais mdp")
+                alert(error)
+                console.log(error)
+            })
     }
 
-    handleChangePseudo(event){
-        this.setState({pseudo : event.target.value});
-    }
-
-    handleChangePassword(event){
-        this.setState({password : event.target.value});
-    }
+    handleChange(event){
+        this.setState({pseudo : document.forms["connexionF"].elements["pseudo"].value});
+        this.setState({mdp : document.forms["connexionF"].elements["mdp"].value});
+         // event.target.value="toto";
+     }
 
     EventConnected() {      
         return(
-        <form>
+        <form name = "connexionF" onSubmit={this.handleSubmit}>
             <h1 id = "PPtitre">ButterFly</h1>
             <fieldset id = "principal">
                 <button type="button" id = "annuler" onClick={()=>this.annulation()}>X</button>
                 <img src="papillon.jpg"/>
-                <input id = "inputC" type = "text" placeholder= "Pseudo" value = {this.state.pseudo} onChange= {this.handleChangePseudo} ></input><br/>
-                <input id = "inputC" type = "text" placeholder= "Password" value = {this.state.password} onChange= {this.handleChangePassword} ></input><br/> 
-                <button type="button" id = "connexion" onClick={() => this.props.CallBackChangeEtat(true)}>Connexion</button>
+                <input id="inputC" type = "text" placeholder='UserName' name = "pseudo" value= {this.state.pseudo} onChange= {this.handleChange}></input>   
+                <input id="inputC" type = "password" placeholder='Password' name = "mdp" value= {this.state.mdp} onChange= {this.handleChange}></input>
+                <button type="button" id = "connexion" onClick={() => this.handleSubmit()}>Connexion</button>
             </fieldset>
         </form>
         )
