@@ -18,7 +18,7 @@ class Users {
         adresseM: AdresseM,
      };
      db.user.insert(user);
-     db.user.find({nom : Nom},{_id : 1},(err, docs)=>{
+     db.user.find({pseudo: Pseudo},{_id : 1},(err, docs)=>{
         if(err){
           console.log("erreur")
           reject(err);
@@ -45,17 +45,23 @@ class Users {
   async exists(login) {
     return new Promise((resolve, reject) => {
       db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{
-        // if(null){
-        //   reject(err)
-        // }else{
-        //   resolve(docs)
-        // }
-        if(docs[0].pseudo === login) {
-          console.log("pseudo",docs[0])
-          resolve(docs);
+        console.log("fonction existe")
+        if(docs[0] !== undefined){
+          if(docs[0].pseudo === login) {
+            console.log("pseudo",docs[0])
+            resolve(docs);
+          }
         } else {
-          //erreur
-          reject(err);
+          // si err vaut null
+          if(err == null){
+            resolve(err)
+          }
+          else{
+            // si err est une erreur
+            console.log("undefined")
+            // erreur
+            reject(err);
+          }
         }
       })
     });
@@ -68,11 +74,20 @@ class Users {
         // if(null){
         //   reject(err)
         // }
-        if(docs[0].password === mdp) {
-          console.log("password",docs[0].password)
-          resolve(docs);
+        console.log("cheqckpasswd")
+        console.log(docs[0])
+        if(docs[0] !== undefined){
+          if(docs[0].password === mdp) {
+            console.log("password",docs[0].password)
+            resolve(docs);
+          }else{
+            //mauvais mot de passe
+            console.log("mauvais mdp !")
+            reject(err)
+          }
         } else {
           //erreur
+          console.log("undefined")
           reject(err);
         }
       });
