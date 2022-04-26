@@ -26,17 +26,18 @@ class Connexion extends Component{
             headers: {'X-Custom-Header': 'foobar'}
           });
         instance.post('api/user/login',{login : this.state.pseudo, password : this.state.mdp})
-          .then(function (response){
+            .then(function (response){
                 console.log("bon mdp")
                 console.log(response)
                 alert(response)
             })
             .then(()=>{
                 console.log("changement")
+                this.props.recupPseudo(this.state.pseudo)
                 this.props.CallBackChangeEtat(true)
             })
-          .catch(function (error){
-                console.log("mauvais mdp")
+            .catch(function (error){
+                console.log("erreur connexion")
                 alert(error)
                 console.log(error)
             })

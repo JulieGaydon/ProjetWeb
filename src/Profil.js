@@ -14,17 +14,18 @@ class Utilisateur extends Component{
             baseURL: 'http://localhost:4000/',
             timeout: 1000,
             headers: {'X-Custom-Header': 'foobar'}
-          });
-          //get user
-          instance.get('api/user/1')
-          .then(res=>{console.log(res)
+        });
+        //get user
+        console.log("componentmount")
+        instance.get('api/user/1')
+        .then(res=>{console.log(res)
             alert(res)})
-            .catch(function (error){ console.log(error)})
-          //get message
-        //   instance.get('api/message/1')
-        //   .then(res=>{console.log(res)
-        //             alert(res)})
-        //   .catch(function (error){ console.log(error)})
+        .catch(function (error){ console.log(error)})
+        //get message
+        // instance.get('api/message/1')
+        // .then(res=>{console.log(res)
+        //         alert(res)})
+        // .catch(function (error){ console.log(error)})
     }
 
     render(){

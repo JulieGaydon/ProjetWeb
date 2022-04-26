@@ -27,6 +27,7 @@ function init(db) {
                 return;
             }
             if(! await users.exists(login)) {
+                console.log("utilisateur inconnu")
                 res.status(401).json({
                     status: 401,
                     message: "Utilisateur inconnu"
@@ -100,8 +101,10 @@ function init(db) {
             console.log("mot de passe differents")
             res.status(401).send("Mot de passe differents");
         }
-        //verifie que le pseudo n'est pas deja utilise
-        // if(users.exists(login)) {
+        // verifie que le pseudo n'est pas deja utilise --> PROBLEME
+        // let exist = users.exists(Pseudo)
+        // console.log("existe :",exist)
+        // if(exist) {
         //     console.log("utilisateur deja pris")
         //     res.status(401).json({
         //         status: 401,
@@ -109,7 +112,7 @@ function init(db) {
         //     })
         // }
         else {
-            console.log("okk !")
+            console.log("okk ! creation utilisateur")
             users.create(Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP)
                 .then((user_id) => res.status(201).send({ id: user_id }))
                 .catch((err) => res.status(500).send(err));
@@ -118,33 +121,44 @@ function init(db) {
 
     // -- Messages --
 
+    console.log("avant create")
     const messages = new Messages.default(db.message);
+    console.log("apres create")
     router.put("/message", (req, res) => {
         const { Pseudo,Message } = req.body;
         if(!Message){
             console.log("missing message")
-            res.status(400).send("Missing message");
+            res.status(401).send("Missing message");
         }else{
             messages.create(Pseudo,Message)
             .then((user_id) => res.status(201).send({ id: user_id }))
             .catch((err) => res.status(500).send(err));
         }
     });
+    
     // router
-    //     .route("/message/:user_id(\\d+)")
-    //     .get(async (req, res) => {
-    //     try {
-    //         const user = await users.get(req.params.user_id);
-    //         if (!user)
-    //             res.sendStatus(404);
-    //         else
-    //             res.send(user);
-    //     }
-    //     catch (e) {
-    //         res.status(500).send(e);
-    //     }
-    // })
-    //     .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
+        // .route("/message/:user_id(\\d+)")
+        // .route('/message/pseudo')
+        router.get("/message/pseudo",async (req, res) => {
+        try {
+            // const message = await messages.get(req.params.user_id);
+            const {Pseudo } = req.body;
+            console.log("body",req.body)
+            const message = await messages.get(Pseudo);
+            if (!message){
+                console.log("message pas trouve")
+                res.sendStatus(404);
+            }
+            else{
+                console.log("message trouve",message)
+                res.send(message);
+            }
+        }
+        catch (e) {
+            res.status(500).send(e);
+        }
+    })
+        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
 
     return router;
 }

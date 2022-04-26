@@ -19,9 +19,9 @@ app.use(session({
 
 var Datastore = require('nedb');        
 db = {};
-db.user =  new Datastore();
+db.user =  new Datastore('./dataUser.db');
 db.user.loadDatabase();
-db.message =  new Datastore();
+db.message =  new Datastore('./dataMessage.db');
 db.message.loadDatabase();
 
 app.use('/api', api.default(db));

@@ -8,11 +8,12 @@ import PageInaccessible from './PageInaccessible';
 class PagePrincipale extends Component{
     constructor(props){
         super(props);
-        this.state = {pageCourante : "PagePrincipale",cliqueC : false, cliqueI : false, connexion : false};
+        this.state = {pageCourante : "PagePrincipale",cliqueC : false, cliqueI : false, connexion : false, pseudo :""};
         this.connection = this.connection.bind(this);
         this.inscription = this.inscription.bind(this);
         this.changeEtat = this.changeEtat.bind(this);
         this.annulation = this.annulation.bind(this);
+        this.recupPseudoFonction = this.recupPseudoFonction.bind(this);
 
     }
 
@@ -36,6 +37,11 @@ class PagePrincipale extends Component{
         return this.state;
     }
 
+    recupPseudoFonction(pseudoInscription){
+        this.setState({pseudo : pseudoInscription})
+        console.log("pseudo PP :", this.state.pseudo)
+    }
+
     EventConnected() {      
         return <>
             <h1 id = "PPtitre">ButterFly</h1>
@@ -57,19 +63,19 @@ class PagePrincipale extends Component{
         }
         if(this.state.connexion === true){
             return (<div className = "MurDeTweets">
-                {<MurDeTweets CallBackChangeEtat = {this.changeEtat}/>}
+                {<MurDeTweets CallBackChangeEtat = {this.changeEtat} PPpseudo = {this.state.pseudo}/>}
             </div>);
         }
         // On passe en parametre une fonction, qui sera appelee parles composants
         // pour modifier l'etat de connexion, et permettra d'afficher le mur de tweet par la page principale 
         if(this.state.cliqueC === true){
             return (<div className = "Connexion">
-                {<Connexion CallBackChangeEtat = {this.changeEtat}/>}
+                {<Connexion CallBackChangeEtat = {this.changeEtat} recupPseudo = {this.recupPseudoFonction}/>}
             </div>);
         }
         if(this.state.cliqueI === true){
             return (<div className = "Inscription">
-                {<Inscription CallBackChangeEtat = {this.changeEtat}/>}
+                {<Inscription CallBackChangeEtat = {this.changeEtat} recupPseudo = {this.recupPseudoFonction}/>}
             </div>);
         }
         if((this.state.connexion === false)||(this.state.cliqueC === false && this.state.cliqueI === false)){

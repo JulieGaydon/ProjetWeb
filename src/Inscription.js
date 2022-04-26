@@ -33,6 +33,8 @@ class Inscription extends Component{
             alert(response)
         })
         .then(()=>{
+            // on transmet le pseudo a PP
+            this.props.recupPseudo(this.state.pseudo)
             this.props.CallBackChangeEtat(true)
         })
         .catch(function (error){
