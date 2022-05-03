@@ -14,13 +14,6 @@ import * as serviceWorker from './serviceWorker';
 import MurDeTweets from './MurDeTweets';
 
 ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
-//  ReactDOM.render(<Profil/>, document.getElementById('root'));
-//  ReactDOM.render(<Message/>, document.getElementById('root'));
-//  ReactDOM.render(<ListeMessage/>, document.getElementById('root'));
-//  ReactDOM.render(<MurDeTweets/>, document.getElementById('root'));
-//  ReactDOM.render(<Connexion />, document.getElementById('root'));
-// ReactDOM.render(<Inscription />, document.getElementById('root'));
-// ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

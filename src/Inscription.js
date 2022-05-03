@@ -16,9 +16,9 @@ class Inscription extends Component{
 
     annulation() {
         this.props.CallBackChangeEtat(false)
-        return (<div className = "PagePrincipale">
-            {<PagePrincipale/>}
-        </div>);
+        // return (<div className = "PagePrincipale">
+        //     {<PagePrincipale/>}
+        // </div>);
         }
 
     handleSubmit(event){
@@ -32,11 +32,11 @@ class Inscription extends Component{
             console.log("resultat"+response)
             alert(response)
         })
-        .then(()=>{
-            // on transmet le pseudo a PP
-            this.props.recupPseudo(this.state.pseudo)
-            this.props.CallBackChangeEtat(true)
-        })
+            .then(()=>{
+                // on transmet le pseudo a PP
+                this.props.recupPseudo(this.state.pseudo)
+                this.props.CallBackChangeEtat(true)
+            })
         .catch(function (error){
             console.log(error)
             alert("error"+error)
@@ -68,7 +68,6 @@ class Inscription extends Component{
                     <input id = "inputI" type = "password" placeholder="Mot de Passe " name = "mdp" value= {this.state.mdp} onChange= {this.handleChange}></input><br/>
                     <input id = "inputI" type = "password" placeholder="Confirmer Mot de Passe" name = "confirmMDP" value= {this.state.confirmMDP} onChange= {this.handleChange} ></input><br/>
                     <button type="button" id = "inscription" onClick={()=>this.handleSubmit()}>Inscription</button>
-                    {/* <button type="submit" id = "inscription">Inscription</button> */}
                 </fieldset>
             </form>)
     }

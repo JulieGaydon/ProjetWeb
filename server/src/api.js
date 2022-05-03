@@ -97,13 +97,33 @@ function init(db) {
             console.log("missing fileds")
             res.status(400).send("Missing fields");
         }
-        if(Password !== ConfirmMDP){
+        else if(Password !== ConfirmMDP){
             console.log("mot de passe differents")
             res.status(401).send("Mot de passe differents");
         }
         // verifie que le pseudo n'est pas deja utilise --> PROBLEME
         // let exist = users.exists(Pseudo)
-        // console.log("existe :",exist)
+        // exist.catch(function(res){
+        //     console.log("okk ! creation utilisateur")
+        //     users.create(Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP)
+        //         .then((user_id) => res.status(201).send({ id: user_id }))
+        //         .catch((err) => res.status(500).send(err));
+        //     })
+        //     exist.then(function(err){
+        //         if(err == null){
+        //             console.log("okk ! creation utilisateur")
+        //             users.create(Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP)
+        //                 .then((user_id) => res.status(201).send({ id: user_id }))
+        //                 .catch((err) => res.status(500).send(err));
+        //     }
+        //     else{
+        //         console.log("utilisateur deja pris")
+        //         res.status(401).json({
+        //             status: 401,
+        //             message: "Utilisateur deja utilise"
+        //         })
+        //     }
+        // })
         // if(exist) {
         //     console.log("utilisateur deja pris")
         //     res.status(401).json({
@@ -121,9 +141,7 @@ function init(db) {
 
     // -- Messages --
 
-    console.log("avant create")
     const messages = new Messages.default(db.message);
-    console.log("apres create")
     router.put("/message", (req, res) => {
         const { Pseudo,Message } = req.body;
         if(!Message){
@@ -131,7 +149,7 @@ function init(db) {
             res.status(401).send("Missing message");
         }else{
             messages.create(Pseudo,Message)
-            .then((user_id) => res.status(201).send({ id: user_id }))
+            .then((_id) => res.status(201).send({ id: _id }))
             .catch((err) => res.status(500).send(err));
         }
     });
@@ -139,18 +157,18 @@ function init(db) {
     // router
         // .route("/message/:user_id(\\d+)")
         // .route('/message/pseudo')
-        router.get("/message/pseudo",async (req, res) => {
+        router.put('/message/pseudo',async (req, res) => {
         try {
             // const message = await messages.get(req.params.user_id);
             const {Pseudo } = req.body;
-            console.log("body",req.body)
             const message = await messages.get(Pseudo);
             if (!message){
                 console.log("message pas trouve")
                 res.sendStatus(404);
             }
             else{
-                console.log("message trouve",message)
+                console.log("message trouve")
+                // console.log("message trouve",message)
                 res.send(message);
             }
         }
@@ -163,4 +181,3 @@ function init(db) {
     return router;
 }
 exports.default = init;
-

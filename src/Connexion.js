@@ -14,9 +14,9 @@ class Connexion extends Component{
 
     annulation() {
         this.props.CallBackChangeEtat(false)
-        return (<div className = "PagePrincipale">
-            {<PagePrincipale/>}
-        </div>);
+        // return (<div className = "PagePrincipale">
+        //     {<PagePrincipale/>}
+        // </div>);
     }
 
     handleSubmit(){

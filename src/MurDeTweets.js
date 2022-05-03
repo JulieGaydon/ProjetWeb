@@ -3,26 +3,18 @@ import FormAddMessage from './FormAddMessage';
 import ListeMessage from './ListeMessage';
 import Profil from './Profil';
 import Logout from './Logout';
+import Recherche from './Recherche';
 import './MurDeTweets.css';
 
 class MurDeTweets extends Component{
     constructor(props){
         super(props);
-        this.state = {afficheP : false, ecrireM : false, pseudo : ""}
-        // -- je n'arrive pas a modifier etat--
-        console.log("pseudo MdT",this.props.PPpseudo)
+        this.state = {afficheP : false, ecrireM : false}
         // props.addMessage({m : "TestMessage"})
         // this.processNewMessage= this.processNewMessage.bind(this)
         this.afficheProfil= this.afficheProfil.bind(this)
         // this.ecrireMessage= this.ecrireMessage.bind(this)
     }
-
-    // componentDidMount(){
-    //     let p = {pseudo : this.props.PPpseudo}
-    //     console.log("p",p)
-    //     this.setState({pseudo : p.pseudo})
-    //     console.log("setstate",this.state.pseudo)
-    // }
 
     // processNewMessage(m){
     //     this.setState((state)=>{state.ListeM.push(m);
@@ -34,15 +26,15 @@ class MurDeTweets extends Component{
         return this.state;
     }
 
-    // ecrireMessage(value){
-    //     this.setState({ecrireM : value});
-    //     return this.state;
-    // }
+    ecrireMessage(value){
+        this.setState({ecrireM : value});
+        return this.state;
+    }
 
     render(){
         if(this.state.afficheP === true){
             return (<div className = "Profil">
-                {<Profil CallBackChangeEtat = {this.props.CallBackChangeEtat} CallBackAfficheProfil = {this.afficheProfil}/>}
+                {<Profil passerPseudo = {this.props.PPpseudo} CallBackChangeEtat = {this.props.CallBackChangeEtat} CallBackAfficheProfil = {this.afficheProfil}/>}
             </div>);
         }
         // if(this.state.ecrireM === true){
@@ -52,18 +44,24 @@ class MurDeTweets extends Component{
         // }
         else{
             return(
-                <div>
-                <fieldset id = "profil">
-                    <div className='MurDeTweets'>
+                <fieldset id = "MurDeTweets">
+                    <div id="enteteM">
                         <button type="button" id = "bouttonMdT" onClick={()=>this.afficheProfil(true)}>Profil</button>
-                        <FormAddMessage/>
                         <Logout CallBackChangeEtat = {this.props.CallBackChangeEtat} />
                     </div>
+                    <div id="recherche">
+                        <Recherche/>
+                    </div>
+                    <div id="messM">
+                        <FormAddMessage passerPseudo = {this.props.PPpseudo}/>
+                        <ListeMessage passerPseudo = {this.props.PPpseudo} tousMessages = {true}/>
+                    </div>
+                    <div id="question">
+
+                    </div>
                 </fieldset>
-                <div>
-                    <ListeMessage passerPseudo = {this.props.PPpseudo}/>
-                </div>
-                </div>
+
+                    
                 )
         }
     }

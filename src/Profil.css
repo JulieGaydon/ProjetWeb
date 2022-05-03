@@ -1,15 +1,62 @@
+#Profil{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 650px;
+    grid-gap: 2px;
+    border: none;
+    
+}
+
 #bouttonProfil{
-        border-radius: 15px;
+    
+    border-radius: 15px;
     background-color:rgb(2, 7, 39);
     transition-duration: 176ms;
-    border: none;
+    border:none;
     padding: 10px;
-    color: white;
     /* type de l'ecriture */
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
-    /* margin-bottom: 10px; */
-    margin-right: 4em;
-    margin-left: 4em;
-    margin-top: 1.5em;
+    color: white;
 }
+
+#enteteP{
+    background-image:url(./fond2.jpeg);
+    border-radius: 5px;
+    grid-column: 1/4;
+    grid-row: 1;
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#Abo{
+    background-color: lightskyblue;
+    grid-column: 1;
+    grid-row: 2;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+}
+
+
+#mess{
+    background-color: lightskyblue;
+    grid-column: 2;
+    grid-row: 2;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+
+    
+}
+
+#infoP{
+    background-color: lightskyblue;
+    grid-column: 3;
+    grid-row: 2;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    height: fit-content;
+}
+

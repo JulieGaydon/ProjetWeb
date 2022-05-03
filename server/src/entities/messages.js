@@ -34,8 +34,7 @@ class Messages {
 
   get(Pseudo) {
     return new Promise((resolve, reject) => {
-      console.log("pseudo",Pseudo)
-      db.message.find({/*pseudo : Pseudo*/},{pseudo:1, message : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+      db.message.find({pseudo :Pseudo},{pseudo:1, message : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         if(err) {
           console.log("err",err)
           reject(err);

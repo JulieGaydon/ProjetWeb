@@ -66,7 +66,7 @@ class PagePrincipale extends Component{
                 {<MurDeTweets CallBackChangeEtat = {this.changeEtat} PPpseudo = {this.state.pseudo}/>}
             </div>);
         }
-        // On passe en parametre une fonction, qui sera appelee parles composants
+        // On passe en parametre une fonction, qui sera appelee par les composants
         // pour modifier l'etat de connexion, et permettra d'afficher le mur de tweet par la page principale 
         if(this.state.cliqueC === true){
             return (<div className = "Connexion">
