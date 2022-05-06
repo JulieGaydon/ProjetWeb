@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 // import FormAddMessage from './FormAddMessage';
 // import Message from './Message';
-// import axios from 'axios';
+ import axios from 'axios';
 // import './ListeMessage.css';
 import React, { useState,setPosts, useEffect } from 'react';
 
@@ -18,7 +18,7 @@ function ListeMessage(props){
         instance.get('api/message/'+p)
         .then(function (response){
             console.log("retourne :",response.data)
-            setPosts(response.map(doc => doc.data()))
+            setPosts(response.data.map(doc => doc.data()))
         })
         .catch(function (error){
             console.log("message pas bon")

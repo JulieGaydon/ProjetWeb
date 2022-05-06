@@ -79,6 +79,9 @@ class PagePrincipale extends Component{
             </div>);
         }
         if((this.state.connexion === false)||(this.state.cliqueC === false && this.state.cliqueI === false)){
+            console.log(this.state.connexion);
+            console.log(this.state.cliqueC)
+            console.log(this.state.cliqueI)
             return this.EventConnected()
         }
     }

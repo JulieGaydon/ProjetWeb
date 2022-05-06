@@ -143,12 +143,14 @@ function init(db) {
 
     const messages = new Messages.default(db.message);
     router.put("/message", (req, res) => {
-        const { Pseudo,Message } = req.body;
-        if(!Message){
+        const { Pseudo,message } = req.body;
+        console.log("Message: ",message,req.body)
+        if(!message){
+            console.log("Message if: ",message)
             console.log("missing message")
             res.status(401).send("Missing message");
         }else{
-            messages.create(Pseudo,Message)
+            messages.create(Pseudo,message)
             .then((_id) => res.status(201).send({ id: _id }))
             .catch((err) => res.status(500).send(err));
         }
@@ -173,6 +175,34 @@ function init(db) {
                 console.log("message trouve")
                 // console.log("message trouve",message)
                 res.send(message);
+            }
+        }
+        catch (e) {
+            res.status(500).send(e);
+        }
+    })
+        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
+
+    
+    router
+        .route("/message/All")
+        .get(async (req, res) => {
+        // .route('/message/pseudo')
+        // router.put('/message/pseudo',async (req, res) => {
+        try {
+            // const message = await messages.get(req.params.user_id);
+            // const {Pseudo } = req.body;
+            // const message = await messages.get(Pseudo);
+            const m = await messages.getAllM();
+            console.log("getAll",m)
+            if (!m){
+                console.log("message pas trouve")
+                res.sendStatus(404);
+            }
+            else{
+                console.log("message trouve")
+                // console.log("message trouve",message)
+                res.send(m);
             }
         }
         catch (e) {
