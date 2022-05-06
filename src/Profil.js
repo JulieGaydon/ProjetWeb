@@ -18,7 +18,7 @@ class Utilisateur extends Component{
             headers: {'X-Custom-Header': 'foobar'}
           });
           //get user
-          instance.get('api/user/1')
+          instance.get('api/user/'+1)
           .then(res=>{console.log(res)
             alert(res)})
             .catch(function (error){ console.log(error)})
