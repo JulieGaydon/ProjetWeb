@@ -30,6 +30,7 @@ class Users {
     });
   }
 
+
   get(userid) {
     return new Promise((resolve, reject) => {
       db.user.find({},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement

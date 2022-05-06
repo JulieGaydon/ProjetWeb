@@ -49,4 +49,3 @@ class Messages {
 }
 
 exports.default = Messages;
-

@@ -154,14 +154,17 @@ function init(db) {
         }
     });
     
-    // router
-        // .route("/message/:user_id(\\d+)")
+    router
+        .route("/message/:pseudo")
+        .get(async (req, res) => {
         // .route('/message/pseudo')
-        router.put('/message/pseudo',async (req, res) => {
+        // router.put('/message/pseudo',async (req, res) => {
         try {
             // const message = await messages.get(req.params.user_id);
-            const {Pseudo } = req.body;
-            const message = await messages.get(Pseudo);
+            // const {Pseudo } = req.body;
+            // const message = await messages.get(Pseudo);
+            console.log("pseudo message :",req.params.pseudo)
+            const message = await messages.get(req.params.pseudo);
             if (!message){
                 console.log("message pas trouve")
                 res.sendStatus(404);
