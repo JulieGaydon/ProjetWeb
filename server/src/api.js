@@ -76,24 +76,28 @@ function init(db) {
     });
 
     router
-        .route("/user/:user_id(\\d+)")
+        .route("/user/:user")
         .get(async (req, res) => {
+        console.log("get user api")
         try {
-            const user = await users.get(req.params.user_id);
+            const user = await users.get(req.params.user);
             if (!user)
-                res.sendStatus(404);
+            res.sendStatus(404);
             else
+            console.log("get user api okk !",user)
                 res.send(user);
         }
         catch (e) {
             res.status(500).send(e);
         }
     })
-        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
+        .delete((req, res, next) => res.send(`delete user ${req.params.user}`));
 
     router.put("/user", (req, res) => {
         const { Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP } = req.body;
         console.log("confirmer :", ConfirmMDP )
+        let exist = users.exists(Pseudo);
+        console.log("EXIST :",exist)
         if (!Nom || !Prenom || !Pseudo || !Password || !AdresseM || !ConfirmMDP) {
             console.log("missing fileds")
             res.status(400).send("Missing fields");
@@ -103,7 +107,6 @@ function init(db) {
             res.status(401).send("Mot de passe differents");
         }
         // verifie que le pseudo n'est pas deja utilise --> PROBLEME
-        // let exist = users.exists(Pseudo)
         // exist.catch(function(res){
         //     console.log("okk ! creation utilisateur")
         //     users.create(Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP)
@@ -125,13 +128,13 @@ function init(db) {
         //         })
         //     }
         // })
-        // if(exist) {
-        //     console.log("utilisateur deja pris")
-        //     res.status(401).json({
-        //         status: 401,
-        //         message: "Utilisateur deja utilise"
-        //     })
-        // }
+        else if(exist) {
+            console.log("utilisateur deja pris")
+            res.status(401).json({
+                status: 401,
+                message: "Utilisateur deja utilise"
+            })
+        }
         else {
             console.log("okk ! creation utilisateur")
             users.create(Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP)
@@ -243,11 +246,11 @@ function init(db) {
         catch (e) {
             res.status(500).send(e);
         }
-    })
-        .delete((req, res, next) =>{
-            amities.delete(req.params.pseudo)
-            .then((res) => res.send(req.params.pseudo))
-            .catch((err) => res.status(500).send(err));
+        })
+        .delete(async (req, res) => {
+            await amities.delete(req.params.pseudo)
+            .then((data) => res.send(data))
+            .catch((err) => res.send(err));
             
         })
     

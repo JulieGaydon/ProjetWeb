@@ -31,40 +31,56 @@ class Users {
   }
 
 
-  get(userid) {
+  get(user) {
     return new Promise((resolve, reject) => {
-      db.user.find({},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
-        if(userid == 1) {
-          resolve(docs);
-        } else {
+      console.log("fonction get user")
+      db.user.find({pseudo : user},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+        if(err) {
           reject(err);
+        } else {
+          resolve(docs);
         }
       })
     });
   }
   
-  async exists(login) {
+  // async exists(login) {
+  //   return new Promise((resolve, reject) => {
+  //     console.log("fonction exists")
+  //     db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{
+  //       console.log(docs[0])
+  //       if(docs[0] !== undefined){
+  //         if(docs[0].pseudo === login) {
+  //           console.log("utilisateur existe -->",docs[0])
+  //           resolve(docs);
+  //         }
+  //       } else {
+  //         // si err vaut null
+  //         if(err == null){
+  //           console.log("utilisateur existe pas")
+  //           resolve(err)
+  //         }
+  //         else{
+  //           // si err est une erreur
+  //           console.log("undefined")
+  //           // erreur
+  //           reject(err);
+  //         }
+  //       }
+  //     })
+  //   });
+  // }
+
+  exists(user) {
     return new Promise((resolve, reject) => {
-      console.log("fonction exists")
-      db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{
-        console.log(docs[0])
-        if(docs[0] !== undefined){
-          if(docs[0].pseudo === login) {
-            console.log("utilisateur existe -->",docs[0])
-            resolve(docs);
-          }
+      console.log("fonction get user")
+      db.user.find({pseudo : user},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+        if(err) {
+          console.log("false")
+          reject(false);
         } else {
-          // si err vaut null
-          if(err == null){
-            console.log("utilisateur existe pas")
-            resolve(err)
-          }
-          else{
-            // si err est une erreur
-            console.log("undefined")
-            // erreur
-            reject(err);
-          }
+          console.log("true")
+          resolve(true);
         }
       })
     });

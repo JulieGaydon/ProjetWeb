@@ -45,14 +45,15 @@ class Amities {
 
   delete(id){
     return new Promise((resolve, reject) => {
-      db.amitie.delete(id,(err, docs)=>{
+      db.amitie.remove(id,(err, docs)=>{
         if(err){
           console.log("erreur")
-          reject(err);
+          reject(false);
         }else{
           console.log("okk")
+          console.log("res donc delete",docs)
           console.log(docs)
-          resolve(docs);
+          resolve(true);
         }
       })
     })
