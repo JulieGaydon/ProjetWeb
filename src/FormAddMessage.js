@@ -31,7 +31,6 @@ function FormAddMessage({passerPseudo}){
             <div id="message">
                 <input onChange={m => addMessage(m.target.value)} id = "inputM" value = {message} placeholder="Ecrire votre message" type = "text"></input>
                 <button className = "button" id = "publierM" onClick={publier}>Publier</button>
-
             </div>
         </form>
     )

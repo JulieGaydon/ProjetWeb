@@ -78,7 +78,7 @@ function Profil ({CallBackChangeEtat, PPpseudo, setClic}){
                         {/* <ListeMessage passerPseudo = {PPpseudo} tousMessages = {true}/> */}
                         {console.log("post:",posts)}
                         {posts.map((post) => (
-                            <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} setClic= {setClic}/>
+                            <Message key = {post._id} idM = {post._id} pseudo = {post.pseudo} message = {post.message} setClic= {setClic} page = "profil"/>
                         ))}
                 </div>
                 <fieldset id="ProfilModif">
@@ -88,9 +88,6 @@ function Profil ({CallBackChangeEtat, PPpseudo, setClic}){
                     <input type = "text" id = "nom" placeholder='Nom' name = "nom" ></input>
                     <input type = "text" id = "prenom" placeholder= "Prénom" name = "prenom" ></input>  
                 </fieldset>
-                {/* <div id="infoP">
-                    <ProfilModif/>
-                </div> */}
                         
             </fieldset>
             </div>

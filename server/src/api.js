@@ -73,7 +73,7 @@ function init(db) {
                 details: (e || "Erreur inconnue").toString()
             });
         }
-    });
+    })
 
     router
         .route("/user/:user")
@@ -93,11 +93,8 @@ function init(db) {
     })
         .delete((req, res, next) => res.send(`delete user ${req.params.user}`));
 
-    router.put("/user", (req, res) => {
+    router.put("/user", async (req, res) => {
         const { Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP } = req.body;
-        console.log("confirmer :", ConfirmMDP )
-        let exist = users.exists(Pseudo);
-        console.log("EXIST :",exist)
         if (!Nom || !Prenom || !Pseudo || !Password || !AdresseM || !ConfirmMDP) {
             console.log("missing fileds")
             res.status(400).send("Missing fields");
@@ -106,34 +103,14 @@ function init(db) {
             console.log("mot de passe differents")
             res.status(401).send("Mot de passe differents");
         }
-        // verifie que le pseudo n'est pas deja utilise --> PROBLEME
-        // exist.catch(function(res){
-        //     console.log("okk ! creation utilisateur")
-        //     users.create(Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP)
-        //         .then((user_id) => res.status(201).send({ id: user_id }))
-        //         .catch((err) => res.status(500).send(err));
-        //     })
-        //     exist.then(function(err){
-        //         if(err == null){
-        //             console.log("okk ! creation utilisateur")
-        //             users.create(Nom, Prenom, Pseudo, Password , AdresseM, ConfirmMDP)
-        //                 .then((user_id) => res.status(201).send({ id: user_id }))
-        //                 .catch((err) => res.status(500).send(err));
-        //     }
-        //     else{
-        //         console.log("utilisateur deja pris")
-        //         res.status(401).json({
-        //             status: 401,
-        //             message: "Utilisateur deja utilise"
-        //         })
-        //     }
-        // })
-        else if(exist) {
-            console.log("utilisateur deja pris")
+        //utilisateur exist, on ne cree pas de nouvel utilisateur
+        else if(await users.exists(Pseudo)) {
+            console.log("Utilisateur deja utilise")
             res.status(401).json({
                 status: 401,
                 message: "Utilisateur deja utilise"
-            })
+            });
+            return;
         }
         else {
             console.log("okk ! creation utilisateur")
@@ -163,12 +140,7 @@ function init(db) {
     router
         .route("/message/:pseudo")
         .get(async (req, res) => {
-        // .route('/message/pseudo')
-        // router.put('/message/pseudo',async (req, res) => {
         try {
-            // const message = await messages.get(req.params.user_id);
-            // const {Pseudo } = req.body;
-            // const message = await messages.get(Pseudo);
             console.log("pseudo message :",req.params.pseudo)
             const message = await messages.get(req.params.pseudo);
             if (!message){
@@ -177,7 +149,6 @@ function init(db) {
             }
             else{
                 console.log("message trouve")
-                // console.log("message trouve",message)
                 res.send(message);
             }
         }
@@ -185,17 +156,18 @@ function init(db) {
             res.status(500).send(e);
         }
     })
-        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
+    .delete(async (req, res) => {
+        await messages.delete(req.params.pseudo)
+        .then((data) => res.send(data))
+        .catch((err) => res.send(err));
+        
+    })
+
 
     router
         .route("/message/All/:pseudo")
         .get(async (req, res) => {
-        // .route('/message/pseudo')
-        // router.put('/message/pseudo',async (req, res) => {
         try {
-            // const message = await messages.get(req.params.user_id);
-            // const {Pseudo } = req.body;
-            // const message = await messages.get(Pseudo);
             console.log("pseudo message :",req.params.pseudo)
             const message = await messages.getAllM(req.params.pseudo);
             if (!message){
@@ -204,7 +176,6 @@ function init(db) {
             }
             else{
                 console.log("message trouve")
-                // console.log("message trouve",message)
                 res.send(message);
             }
         }

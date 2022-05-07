@@ -44,47 +44,62 @@ class Users {
     });
   }
   
-  // async exists(login) {
-  //   return new Promise((resolve, reject) => {
-  //     console.log("fonction exists")
-  //     db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{
-  //       console.log(docs[0])
-  //       if(docs[0] !== undefined){
-  //         if(docs[0].pseudo === login) {
-  //           console.log("utilisateur existe -->",docs[0])
-  //           resolve(docs);
-  //         }
-  //       } else {
-  //         // si err vaut null
-  //         if(err == null){
-  //           console.log("utilisateur existe pas")
-  //           resolve(err)
-  //         }
-  //         else{
-  //           // si err est une erreur
-  //           console.log("undefined")
-  //           // erreur
-  //           reject(err);
-  //         }
-  //       }
-  //     })
-  //   });
-  // }
-
-  exists(user) {
+  async exists(login) {
     return new Promise((resolve, reject) => {
-      console.log("fonction get user")
-      db.user.find({pseudo : user},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
-        if(err) {
-          console.log("false")
-          reject(false);
+      console.log("fonction exists")
+      db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{
+        console.log(docs[0])
+        if(docs[0] !== undefined){
+          if(docs[0].pseudo === login) {
+            console.log("utilisateur existe -->",docs[0])
+            resolve(docs);
+          }
         } else {
-          console.log("true")
-          resolve(true);
+          // si err vaut null
+          if(err == null){
+            console.log("utilisateur existe pas")
+            resolve(err)
+          }
+          else{
+            // si err est une erreur
+            console.log("undefined")
+            // erreur
+            reject(err);
+          }
         }
       })
     });
   }
+
+  // exists(user){
+  //   return new Promise((resolve, reject) => {
+  //     db.message.find(({pseudo : user}),(err, docs)=>{
+  //       if(err){
+  //         console.log("erreur")
+  //         reject(false);
+  //       }else{
+  //         console.log("res docs exists",docs)
+  //         console.log(docs)
+  //         resolve(true);
+  //       }
+  //     })
+  //   })
+  // }
+
+  // exists(user) {
+  //   return new Promise((resolve, reject) => {
+  //     console.log("fonction get user")
+  //     db.user.find({pseudo : user},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+  //       if(err) {
+  //         console.log("false")
+  //         reject(false);
+  //       } else {
+  //         console.log("true")
+  //         resolve(true);
+  //       }
+  //     })
+  //   });
+  // }
   
   checkpassword(login, mdp) {
     return new Promise((resolve, reject) => {

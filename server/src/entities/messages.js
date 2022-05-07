@@ -44,6 +44,21 @@ class Messages {
     });
   }
 
+  delete(id){
+    return new Promise((resolve, reject) => {
+      db.message.remove(({_id : id}),(err, docs)=>{
+        if(err){
+          console.log("erreur")
+          reject(false);
+        }else{
+          console.log("res docs delete",docs)
+          console.log(docs)
+          resolve(true);
+        }
+      })
+    })
+  }
+
   getAllM(Pseudo) {
     return new Promise((resolve, reject) => {
       db.message.find({},{pseudo:1, message : 1, _id : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement

@@ -38,7 +38,7 @@ function ProfilAmi ({CallBackChangeEtat, PPpseudo, pseudoA, setClic}){
                     instance.delete('api/ami/'+response.data[i]._id)
                     .then(function (response){
                         console.log("suppresion lien amitie",response)
-                        alert(response)
+                        alert("Desabonné")
                     })
                     .catch(function (error){
                         console.log(error)
@@ -55,14 +55,13 @@ function ProfilAmi ({CallBackChangeEtat, PPpseudo, pseudoA, setClic}){
                 instance.put('api/ami',{ Pseudo :PPpseudo, Pami : pseudoA})
                 .then(function (response){
                     console.log("resultat",response)
-                    alert(response)
+                    alert("Abonné !")
                 })
                 .catch(function (error){
                     console.log(error)
                     alert("error",error)
                 })
             }
-            console.log("data pas vide : existe lien")
         })
         .catch(function (error){
             alert("fonction get ami",error)
