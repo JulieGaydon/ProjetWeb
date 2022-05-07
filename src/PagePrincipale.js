@@ -19,24 +19,26 @@ class PagePrincipale extends Component{
 
     // fonction qu'on passera a l'enfant, qui modifiera l'etat de connexion
     changeEtat(value){
+        alert("change etat")
         this.setState({cliqueC : false, cliqueI : false, connexion : value})
     }
-
+    
     connection(){
         this.setState({pageCourante : "Connexion",cliqueC : true,cliqueI : false});
         return this.state;
     }
-
+    
     inscription(){
         this.setState({pageCourante : "Inscription",cliqueI : true,cliqueC : false}); 
         return this.state;
     }
     
     annulation(value){
+        alert("annulation")
         this.setState({pageCourante : value,cliqueI : false,cliqueC : false}); 
         return this.state;
     }
-
+    
     recupPseudoFonction(pseudoInscription){
         this.setState({pseudo : pseudoInscription})
         console.log("pseudo PP :", this.state.pseudo)

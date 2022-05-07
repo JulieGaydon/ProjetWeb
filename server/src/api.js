@@ -1,6 +1,7 @@
 const express = require("express");
 const Users = require("./entities/users.js");
 const Messages = require("./entities/messages.js");
+const Amities = require("./entities/Amities.js");
 
 function init(db) {
     const router = express.Router();
@@ -183,9 +184,8 @@ function init(db) {
     })
         .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
 
-    
     router
-        .route("/message/All")
+        .route("/message/All/:pseudo")
         .get(async (req, res) => {
         // .route('/message/pseudo')
         // router.put('/message/pseudo',async (req, res) => {
@@ -193,16 +193,16 @@ function init(db) {
             // const message = await messages.get(req.params.user_id);
             // const {Pseudo } = req.body;
             // const message = await messages.get(Pseudo);
-            const m = await messages.getAllM();
-            console.log("getAll",m)
-            if (!m){
+            console.log("pseudo message :",req.params.pseudo)
+            const message = await messages.getAllM(req.params.pseudo);
+            if (!message){
                 console.log("message pas trouve")
                 res.sendStatus(404);
             }
             else{
                 console.log("message trouve")
                 // console.log("message trouve",message)
-                res.send(m);
+                res.send(message);
             }
         }
         catch (e) {
@@ -210,7 +210,47 @@ function init(db) {
         }
     })
         .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
+    
+    // --- Lien Ami ---
 
+    const amities = new Amities.default(db.amitie);
+    router.put("/ami", (req, res) => {
+        const { Pseudo,Pami } = req.body;
+        console.log("Message: ",Pami,req.body)
+        if(!Pami || !Pseudo){
+            console.log("missing message")
+            res.status(401).send("Missing message");
+        }else{
+            amities.create(Pseudo,Pami)
+            .then((_id) => res.status(201).send({ id: _id }))
+            .catch((err) => res.status(500).send(err));
+        }
+    });
+
+    router
+        .route("/ami/:pseudo")
+        .get(async (req, res) => {
+        try {
+            console.log("pseudo message :",req.params.pseudo)
+            const Pami = await amities.get(req.params.pseudo);
+            if (!Pami){
+                res.sendStatus(404);
+            }
+            else{
+                res.send(Pami);
+            }
+        }
+        catch (e) {
+            res.status(500).send(e);
+        }
+    })
+        .delete((req, res, next) =>{
+            amities.delete(req.params.pseudo)
+            .then((res) => res.send(req.params.pseudo))
+            .catch((err) => res.status(500).send(err));
+            
+        })
+    
     return router;
 }
 exports.default = init;

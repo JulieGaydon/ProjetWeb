@@ -23,6 +23,8 @@ db.user =  new Datastore('./dataUser.db');
 db.user.loadDatabase();
 db.message =  new Datastore('./dataMessage.db');
 db.message.loadDatabase();
+db.amitie =  new Datastore('./dataAmitie.db');
+db.amitie.loadDatabase();
 
 app.use('/api', api.default(db));
 

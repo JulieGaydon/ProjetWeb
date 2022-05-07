@@ -3,6 +3,7 @@ import axios from 'axios';
 import FormAddMessage from './FormAddMessage';
 import ListeMessage from './ListeMessage';
 import Profil from './Profil';
+import ProfilAmi from './ProfilAmi';
 import Logout from './Logout';
 import Recherche from './Recherche';
 import './MurDeTweets.css';
@@ -12,17 +13,19 @@ function MurDeTweets ({CallBackChangeEtat, PPpseudo}){
     const[posts, setPosts] = useState([]);
     // si false -> mur tweet , true -> profil
     const[profil, setProfil] = useState(false);
-    const[pseudo, setPseudo] = useState("");
+    const[clicProfil, setClic] = useState("");
+    const[pppseudo, setPseudo] = useState("");
 
     useEffect(()=>{
         let p = {PPpseudo}
+        console.log("PPp: ",PPpseudo)
         setPseudo(p.PPpseudo)
         const instance = axios.create({
             baseURL: 'http://localhost:4000/',
             timeout: 1000,
             headers: {'X-Custom-Header': 'foobar'}
         });
-        instance.get('api/message/All')
+        instance.get('api/message/All/'+p.PPpseudo)
         .then(function (response){
             //response.data liste de tous les messages
             console.log("retourne :",response.data)
@@ -35,16 +38,23 @@ function MurDeTweets ({CallBackChangeEtat, PPpseudo}){
             console.log(error)
         })
     },[])
-    
-        if (profil == true){
+    // {clicProfil}
+    console.log("clic :",clicProfil, profil, pppseudo)
+        if(clicProfil != pppseudo && clicProfil != ""){
             return(
                 <div>
-                   <Profil CallBackChangeEtat = {CallBackChangeEtat} PPpseudo = {pseudo}/>
-
-
+                <ProfilAmi CallBackChangeEtat = {CallBackChangeEtat} PPpseudo = {pppseudo} pseudoA = {clicProfil} setClic= {setClic} />
                 </div>
             )
-        }else{
+        }
+        else if (profil === true ||( clicProfil == pppseudo && pppseudo != "")){
+            return(
+                <div>
+                   <Profil CallBackChangeEtat = {CallBackChangeEtat} PPpseudo = {pppseudo} setClic= {setClic}/>
+                </div>
+            )
+        }
+        else{
             return(
                 <div id = "MurDeTweets">
                 <div id="enteteM">
@@ -57,11 +67,11 @@ function MurDeTweets ({CallBackChangeEtat, PPpseudo}){
                 </div>
                 
                 <div id="messM">
-                    <FormAddMessage passerPseudo = {pseudo}/>
+                    <FormAddMessage passerPseudo = {pppseudo}/>
                     {/* <ListeMessage passerPseudo = {PPpseudo} tousMessages = {true}/> */}
                     {console.log("post:",posts)}
                     {posts.map((post) => (
-                        <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} />
+                        <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} setClic= {setClic}/>
                     ))}
 
                 </div>

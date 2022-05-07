@@ -4,11 +4,12 @@ import axios from 'axios';
 import Logout from './Logout';
 import './Profil.css';
 import FormAddMessage from './FormAddMessage';
-import ProfilModif from './ProfilModif'
+import Ami from './Ami'
 import MurDeTweets from './MurDeTweets';
 
-function Profil ({CallBackChangeEtat, PPpseudo}){
+function Profil ({CallBackChangeEtat, PPpseudo, setClic}){
     const[posts, setPosts] = useState([]);
+    const[liens, setLiens] = useState([]);
     const[pseudo, setPseudo] = useState([]);
     const[mdt, setMur] = useState(false);
 
@@ -23,6 +24,7 @@ function Profil ({CallBackChangeEtat, PPpseudo}){
             timeout: 1000,
             headers: {'X-Custom-Header': 'foobar'}
         });
+        // recupere nos messages
         instance.get('api/message/'+p.PPpseudo)
         .then(function (response){
             //response.data liste de tous les messages
@@ -32,6 +34,18 @@ function Profil ({CallBackChangeEtat, PPpseudo}){
         })
         .catch(function (error){
             console.log("message pas bon")
+            alert(error)
+            console.log(error)
+        })
+        // recupere les liens d'amitie
+        instance.get('api/ami/'+p.PPpseudo)
+        .then(function (response){
+            //response.data liste de tous les messages
+            console.log("retourne :",response.data)
+            //doc = 1message
+            setLiens(response.data.map((doc) => doc))
+        })
+        .catch(function (error){
             alert(error)
             console.log(error)
         })
@@ -51,24 +65,32 @@ function Profil ({CallBackChangeEtat, PPpseudo}){
             <fieldset id = "Profil">
                 <div id="enteteP">
                     <button type="button" id = "bouttonMdT" onClick={()=>setMur(true)}>Mur</button>
-                    <button type = "button" id = "bouttonProfil">Abonnement</button>
-                    <button type = "button" id = "bouttonProfil">Abonnes</button>
                     <Logout CallBackChangeEtat = {CallBackChangeEtat}/>
                 </div> 
                 <div id="Abo">
                     <p>liste Abonnes</p>
+                    {liens.map((lien) => (
+                        <Ami key = {lien._id} pseudo = {lien.pami}/>
+                        ))}
                 </div>
                 <div id="mess">
                 <FormAddMessage passerPseudo = {pseudo}/>
                         {/* <ListeMessage passerPseudo = {PPpseudo} tousMessages = {true}/> */}
                         {console.log("post:",posts)}
                         {posts.map((post) => (
-                            <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} />
+                            <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} setClic= {setClic}/>
                         ))}
                 </div>
-                <div id="infoP">
+                <fieldset id="ProfilModif">
+                    <img id="photo"src="papillon.jpg"/>
+                    <button type = "button" id = "Modifier">Modifier</button>
+                    <input id = "pseudoP" type = "text" placeholder= "Pseudo" name = "pseudo" ></input>
+                    <input type = "text" id = "nom" placeholder='Nom' name = "nom" ></input>
+                    <input type = "text" id = "prenom" placeholder= "Prénom" name = "prenom" ></input>  
+                </fieldset>
+                {/* <div id="infoP">
                     <ProfilModif/>
-                </div>
+                </div> */}
                         
             </fieldset>
             </div>

@@ -8,7 +8,6 @@ class Messages {
     // suite plus tard avec la BD
   }
   
-  //mettre le pesudo + user id ?
   create(Pseudo, Message) {
     console.log("create message")
     return new Promise((resolve, reject) => {
@@ -17,16 +16,14 @@ class Messages {
         message : Message,
         date : new Date(),
     };
-     db.message.insert(mes);
-     console.log("message insere")
-     db.message.find({message: Message},{pseudo : 1,message : 1,_id : 1},(err, docs)=>{
+     db.message.insert(mes,(err, docs)=>{
         if(err){
           console.log("erreur")
           reject(err);
         }else{
           console.log("okk")
-          console.log(docs[0].message, docs[0].pseudo)
-          resolve(docs[0]._id);
+          console.log(docs)
+          resolve(docs);
         }
         })
     });
@@ -34,11 +31,12 @@ class Messages {
 
   get(Pseudo) {
     return new Promise((resolve, reject) => {
-      db.message.find({pseudo :Pseudo},{pseudo:1, message : 1, _id : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+      db.message.find({pseudo: Pseudo},{pseudo:1, message : 1, _id : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         if(err) {
           console.log("err",err)
           reject(err);
         } else {
+          console.log("get pseudo")
           console.log("docs message",docs)
           resolve(docs);
         }
@@ -46,13 +44,14 @@ class Messages {
     });
   }
 
-  getAllM() {
+  getAllM(Pseudo) {
     return new Promise((resolve, reject) => {
       db.message.find({},{pseudo:1, message : 1, _id : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         if(err) {
           console.log("err",err)
           reject(err);
         } else {
+          console.log("get all")
           console.log("docs message",docs)
           resolve(docs);
         }
