@@ -1,6 +1,4 @@
 import React, { useState} from 'react';
-import ListeMessage from './ListeMessage';
-import MurDeTweetsF from './MurDeTweets';
 import './FormAddMessage.css';
 import axios from 'axios';
 
@@ -19,20 +17,18 @@ function FormAddMessage({passerPseudo}){
         instance.put('api/message',{Pseudo : p.passerPseudo, message : message})
         .then(function (response){
             console.log("resultat",response)
-            alert("ca marche",response)
         })
         .catch(function (error){
             console.log(error)
-            alert("error",error)
         })
     }
 
     return(
         <form className = "FormAddMessage" name = "FormAddMessage">
             <div id="message">
-                <input onChange={(e) => setMessage(e.target.value)} id = "inputM" value={message} placeholder="Ecrivez votre message" type="text"/>
+                <input onChange={(e) => setMessage(e.target.value)} id = "inputMessage" value={message} placeholder="Ecrivez votre message" type="text"/>
 
-                <button onClick={publier} type="submit"  id = "publierM">Publier</button>
+                <button onClick={publier} type="submit"  id = "boutonPublier">Publier</button>
             </div>
         </form>
     )

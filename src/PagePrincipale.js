@@ -3,7 +3,6 @@ import Inscription from './Inscription';
 import Connexion from './Connexion';
 import "./PagePrincipale.css";
 import MurDeTweets from './MurDeTweets';
-import PageInaccessible from './PageInaccessible';
 
 class PagePrincipale extends Component{
     constructor(props){
@@ -19,7 +18,6 @@ class PagePrincipale extends Component{
 
     // fonction qu'on passera a l'enfant, qui modifiera l'etat de connexion
     changeEtat(value){
-        alert("change etat")
         this.setState({cliqueC : false, cliqueI : false, connexion : value})
     }
     
@@ -46,23 +44,16 @@ class PagePrincipale extends Component{
 
     EventConnected() {      
         return <>
-            <h1 id = "PPtitre">ButterFly</h1>
-            <fieldset id = "principal">
-                {/* creer fonction anuler !! */}
-                <button type="button" id = "annuler" onClick={()=>this.annulation("PageInaccessible")}>X</button>
+            <div id = "cadrePrincipal">
+                <h1 id = "titre">BUTTERFLY</h1>
                 <img src="papillon.jpg"/>
                 <button type="button" id = "bouttonPP" onClick={()=>this.connection()}>Connexion</button>     
                 <button type="button" id = "bouttonPP" onClick={()=>this.inscription()}>Inscription</button>
-            </fieldset>
+            </div>
             </>; 
     }
 
     render(){
-        if(this.state.pageCourante === "PageInaccessible"){
-            return (<div className = "PageInaccessible">
-                {<PageInaccessible CallBackAnnulation= {this.annulation}/>}
-            </div>);
-        }
         if(this.state.connexion === true){
             return (<div className = "MurDeTweets">
                 {<MurDeTweets CallBackChangeEtat = {this.changeEtat} PPpseudo = {this.state.pseudo}/>}

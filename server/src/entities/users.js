@@ -1,11 +1,8 @@
 const { bdd } = require("mocha/lib/interfaces");
 
-// db.user.loadDatabase(); 
-
 class Users {
   constructor(db) {
     this.db = db
-    // suite plus tard avec la BD
   }
   
   create(Nom, Prenom, Pseudo, Password , AdresseM) {
@@ -20,10 +17,9 @@ class Users {
      db.user.insert(user);
      db.user.find({pseudo: Pseudo},{pseudo : 1,_id : 1},(err, docs)=>{
         if(err){
-          console.log("erreur")
+          console.log("erreur create user")
           reject(err);
         }else{
-          console.log("ok")
           resolve(docs[0]._id);
         }
         })
@@ -33,7 +29,6 @@ class Users {
 
   get(user) {
     return new Promise((resolve, reject) => {
-      console.log("fonction get user")
       db.user.find({pseudo : user},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
         if(err) {
           reject(err);
@@ -46,12 +41,11 @@ class Users {
   
   async exists(login) {
     return new Promise((resolve, reject) => {
-      console.log("fonction exists")
       db.user.find({pseudo : login},{pseudo : 1},(err, docs)=>{
         console.log(docs[0])
         if(docs[0] !== undefined){
           if(docs[0].pseudo === login) {
-            console.log("utilisateur existe -->",docs[0])
+            console.log("utilisateur existe deja")
             resolve(docs);
           }
         } else {
@@ -71,51 +65,11 @@ class Users {
     });
   }
 
-  // exists(user){
-  //   return new Promise((resolve, reject) => {
-  //     db.message.find(({pseudo : user}),(err, docs)=>{
-  //       if(err){
-  //         console.log("erreur")
-  //         reject(false);
-  //       }else{
-  //         console.log("res docs exists",docs)
-  //         console.log(docs)
-  //         resolve(true);
-  //       }
-  //     })
-  //   })
-  // }
-
-  // exists(user) {
-  //   return new Promise((resolve, reject) => {
-  //     console.log("fonction get user")
-  //     db.user.find({pseudo : user},{nom : 1, prenom : 1, pseudo : 1, password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
-  //       if(err) {
-  //         console.log("false")
-  //         reject(false);
-  //       } else {
-  //         console.log("true")
-  //         resolve(true);
-  //       }
-  //     })
-  //   });
-  // }
-  
   checkpassword(login, mdp) {
     return new Promise((resolve, reject) => {
-      db.user.find({pseudo : login},{password : 1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
-        // let userid = 1; // À remplacer par une requête bd
-        // if(null){
-        //   reject(err)
-        // }
-        console.log("cheqckpasswd")
-        console.log("doc 0: ",docs[0])
-        console.log("doc 1: ",docs[1])
-        console.log("doc : ",docs)
-        console.log("doc password: ",docs[0].password)
+      db.user.find({pseudo : login},{password : 1},(err, docs)=>{  
         if(docs[0] !== undefined){
           if(docs[0].password === mdp) {
-            console.log("password",docs[0].password)
             resolve(docs);
           }else{
             //mauvais mot de passe

@@ -1,15 +1,11 @@
 const { bdd } = require("mocha/lib/interfaces");
 
-// db.user.loadDatabase(); 
-
 class Amities {
   constructor(db) {
     this.db = db
-    // suite plus tard avec la BD
   }
   
   create(Pseudo, Pami) {
-    console.log("create lien amitie")
     return new Promise((resolve, reject) => {
       let lienA ={
         pseudo : Pseudo,
@@ -17,10 +13,9 @@ class Amities {
     };
      db.amitie.insert(lienA,(err, docs)=>{
         if(err){
-          console.log("erreur")
+          console.log("erreur create lien amitie")
           reject(err);
         }else{
-          console.log("okk")
           console.log(docs)
           resolve(docs);
         }
@@ -30,13 +25,12 @@ class Amities {
 
   get(Pseudo) {
     return new Promise((resolve, reject) => {
-      db.amitie.find({pseudo: Pseudo},{pami : 1, _id:1},(err, docs)=>{   //on ecrit un JSON : renvoi erreur ou liste de renseignement
+      db.amitie.find({pseudo: Pseudo},{pami : 1, _id:1},(err, docs)=>{ 
         if(err) {
-          console.log("err",err)
+          console.log("err get pseudo ami",err)
           reject(err);
         } else {
-          console.log("get pseudo")
-          console.log("docs message",docs)
+          console.log("get pseudo ami",docs)
           resolve(docs);
         }
       })
@@ -47,10 +41,10 @@ class Amities {
     return new Promise((resolve, reject) => {
       db.amitie.remove(({_id : id}),(err, docs)=>{
         if(err){
-          console.log("erreur")
+          console.log("erreur delete")
           reject(false);
         }else{
-          console.log("res docs delete",docs)
+          console.log("delete",docs)
           console.log(docs)
           resolve(true);
         }

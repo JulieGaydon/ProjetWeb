@@ -1,0 +1,32 @@
+- Dossier -
+
+Gallet Camille 3700630
+Gaydon julie 28606830
+
+-- Schéma logique BD --
+	Nous avons un dictionnaire de BD contenant 3 bases : users, messages, amities
+
+-- Répartition du travail --
+
+Nous avons réalisé le projet en codant toutes les fonctionnalités ensemble, que ce soit côté client ou serveur.
+
+-- Problèmes rencontrés --
+
+Nous avons eu du mal à comprendre comment s'effectuait la liaison entre la partie serveur et la partie client via l'api.
+
+En ce qui concerne le client :
+Nous avons commencé par structurer notre code en composants. Il y avait des problèmes avec le render qui ne se mettait pas à jour après modification de certaines variables.
+Face à cette incompréhension, nous avons décidé de remplacer certains composants par des fonctions, ce qui à reglé nos problèmes de synchronisation.
+
+En ce qui concerne le serveur :
+Nous n'avions pas assez d'exemples pour comprendre correctement l'implémentation de l'api. Nous avons eu du mal avec les fonctions EXISTS et DELETE.
+
+-- Ce qu'il reste à faire --
+	Afficher des messages d'erreur à l'écran (mauvais mdp, champ manquant, pseudo déjà utilisé...)
+
+-- Fonctionnalités --
+	on peut supprimer nos messages uniquement depuis notre profil
+	On peut se désabonner en cliquant sur le bouton abonné si on est déjà abonné
+	Vérifier qu'un pseudo n'est pas deja utilisé (EXISTS)
+	Supprimer une relation d'amitié et un message (DELETE)
+	Recherche de messages par mots-clés

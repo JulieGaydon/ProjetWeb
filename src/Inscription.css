@@ -1,35 +1,65 @@
-#inputI{
+#cadreInscription{
+    background-color: cadetblue;
+    background-position:center;
     border-radius: 5px;
-    height: 40px;
-    font-size: 20px; 
-    opacity: 0.8;
+    border: none;;
+    width: 600px;
+    height: 520px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3px;
+}
+
+#annuler{
+    font-size: 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:rgb(2, 7, 39);
+}
+
+#inputsInscr{
+    margin-bottom: 10px;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+
+#inputInscription{
+    border-radius: 5px;
+    font-size: 25px; 
     background-color:rgb(253, 251, 249);
-    margin-left: 240px;
-    margin-bottom: 3px;
-    width: 200px;
-    height: 30px;
+    color:rgb(2, 7, 39);
+    border: none;
+    padding: 10px;
+    margin: 5px;
 }
 
 #inscription{
-    border-radius: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 40px;
+    margin: 5px;
+    text-align: center;
+}
+
+#boutonInscription{
+    border-radius: 5px;
     background-color:rgb(2, 7, 39);
     transition-duration: 176ms;
     border: none;
     font-weight: bold;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color:white;
-    font-size: 20px;
-    width: 150px;
-    height: 40px;
-    margin-top: 2%;
-    margin-bottom: 15%;
-    margin-right: 250px;
-    margin-left: 270px;
+    font-size: 30px;
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+    margin-right: 200px;
+    margin-left: 200px;
 }
-
-#titreI{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    text-align: center;
-    color: white;
-    font-size: 250%;
-  }
+#boutonInscription:hover{
+    background-color:rgb(95, 158, 160);
+    border: 2px solid black;
+}

@@ -1,7 +1,6 @@
 import React, { useEffect ,useState } from 'react';
 import axios from 'axios';
 import FormAddMessage from './FormAddMessage';
-import ListeMessage from './ListeMessage';
 import Profil from './Profil';
 import ProfilAmi from './ProfilAmi';
 import Logout from './Logout';
@@ -18,7 +17,6 @@ function MurDeTweets ({CallBackChangeEtat, PPpseudo}){
 
     useEffect(()=>{
         let p = {PPpseudo}
-        console.log("PPp: ",PPpseudo)
         setPseudo(p.PPpseudo)
         const instance = axios.create({
             baseURL: 'http://localhost:4000/',
@@ -27,19 +25,14 @@ function MurDeTweets ({CallBackChangeEtat, PPpseudo}){
         });
         instance.get('api/message/All/'+p.PPpseudo)
         .then(function (response){
-            //response.data liste de tous les messages
             console.log("retourne :",response.data)
-            //doc = 1message
             setPosts(response.data.map((doc) => doc))
         })
         .catch(function (error){
-            console.log("message pas bon")
-            alert(error)
             console.log(error)
         })
     },[])
-    // {clicProfil}
-    console.log("clic :",clicProfil, profil, pppseudo)
+
         if(clicProfil != pppseudo && clicProfil != ""){
             return(
                 <div>
@@ -57,25 +50,34 @@ function MurDeTweets ({CallBackChangeEtat, PPpseudo}){
         else{
             return(
                 <div id = "MurDeTweets">
-                <div id="enteteM">
-                    <button type="button" id = "bouttonMdT" onClick={()=>setProfil(true)}>Profil</button>
-                    <Logout CallBackChangeEtat = {CallBackChangeEtat} />                     
-                </div>
-            
-                <div id="recherche">
-                    <Recherche PPpseudo = {pppseudo} setClic= {setClic}/>
-                </div>
-                
-                <div id="messM">
-                    <FormAddMessage passerPseudo = {pppseudo}/>
-                    {/* <ListeMessage passerPseudo = {PPpseudo} tousMessages = {true}/> */}
-                    {console.log("post:",posts)}
-                    {posts.map((post) => (
-                        <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} date = {post.date} setClic= {setClic}/>
-                    ))}
+                    <div id="enteteMur">
+                        <img src="papillon.jpg"/>
+                        <h2 id = "titre">BUTTERFLY</h2>
+                        <Logout CallBackChangeEtat = {CallBackChangeEtat} />                     
+                    </div>
+                    <div id="cardeGauche">
+                        <div id="cadreProfil">
+                            <img id="photo"src="papillon.jpg"/>
+                            <div id="info">
+                                <p>@{pppseudo}</p>
+                                <button type="button" id = "bouttonMdT" onClick={()=>setProfil(true)}>Profil</button>
+                            </div>
+                        </div>
+                        <div id="recherche">
+                            <Recherche PPpseudo = {pppseudo} setClic= {setClic}/>
+                        </div>
+                    </div>
+                    <div id="messM">
+                        <FormAddMessage passerPseudo = {pppseudo}/>
+                        <div id="cadreTweets">
+                            {posts.map((post) => (
+                                <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} date = {post.date} setClic= {setClic}/>
+                                ))}
+                        </div>
 
+                    </div>
                 </div>
-            </div>)
+            )
             
         }
         

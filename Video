@@ -1,0 +1,71 @@
+Video
+
+-- LANCEMENT DU SITE
+
+C  -- Intro --
+    Bonjour, 
+    Dans cette video, julie et moi allons vous presenter notre site nommé Butterfly.
+    C'est un reseau social qui permet de poster et lire des messages de toutes les personnes inscrites sur le site
+    Le projet est composé de plusieurs parties : Client, le Serveur, l'api qui fait le lien entre les deux ainsi que le visuel codé avec le css.
+    Julie va commencer par vous parler de la partie client
+
+-- Client --
+
+-- COMPOSANT --
+
+J - Dans le client nous avons 2 composants principaux qui sont : Page principale et mur de tweet. L'affichage de ces deux composants se fait selon la valeur de l'etat, qui est initialisé a false  au lancement du site.
+        On arrive diretement sur Page Principale qui propose deux bouton : connexion et inscription qui sont le composants de page principale.
+        Lorsqu'un bouton est cliqué, on est redirige vers la page correspondante. Une fois l'inscription ou la connexion effectue, l'etat de connexion divient true et nous amene sur le composant mur de tweet
+
+J - Mur de Tweets est le composant qui affiche les fonctionnalités disponibles sur notre site une fois connecté :
+                On retrouve les messages de tous les utilisateurs, un formulaire d'ajout d'un message ainsi qu'une barre de recherche permettant de retrouver des messages par mots cles.
+                l'ensemble de ces vomposants contienne aussi le composant logout qui permet de modifier l'etat de cconnexion de true a false et donc de se deconnecter, et donc de nous retourner a la page principale.
+                
+                En cliquant sur le pseudo d'un message, on arrive sur la page de l'utilisateur en question, ou on peut voir tous les messages ecrit de la personne.
+                On a aussi la possibilité de l'ajouter a notre liste d'ami.
+
+            C - On peut eglalement cliquer sur nos message ou sur le bouton profil pour etre rediriger vers notre profil personnel, ou nous avons la possibilite de supprimer nos message, et de voir notre liste d'abonnement.
+
+--MONTRER NAVIGATEUR --
+
+C - Grace a l'outils de developpement du navigateur, on peut voir les transferts d'informations entre le client et le serveur, lorsqu'on insere un message, on appercoit le dictionnaire contenant les info du message (le pseudo de la personne connectee a cette session ainsi que le message). De meme lorsque l'on supprime un message, on recoit la confiramtion que le message a ete supprimé.
+
+-- MONTRER CODE --
+
+J On va maintenant obserevr la communication entre le client et le serveur via le composant Inscription, qui est le plus interessant, avec les conditions de validations d'inscription.
+    Il y a plusieurs contraintes a respecter afin de valider l'inscription et d'alors creer un nouvel utilisateur 
+    Il faut que tous les champs soient rempli
+    mot de passe et confirmer mdp soient les memes
+    pas meme pseudo
+    si conditions verifiees : on est ajouté dans la base de donnees user et on arrive sur mur de Tweet 
+
+C -On nous a demander de presenter une fonctionalité dont on est satisfaites. Nous avons choisi de vous parler de l'Ajout d'un ami :
+    Il faut pour cela se rendre sur le profil de l'utilisateur que nous voulons ajouter a notre liste d'amis.
+    Pour le trouver, il faut aller sur un de ces message, cliquer sur son peudo, qui nous redirige vers son profil.
+    On a alors un bouton ajouté qui nous permet d'ajouter un ami si il n'est pas deja present dans notre liste d'ami, et dans le cas contraire, le retirer de la liste.
+    il se fait en cliquant sur un message pour afficher le profil de l'utilisateur qui nous permet de l'ajouter dans notre liste d'amis
+
+-- Serveur --
+Nous allons a present parler de la partie serveur 
+
+J architecture : Notre serveur est divise en plusieurs parties.
+                code src dans entities : ce sont les fonctions interactions avec base de donnees : users / messages / amities (get, put, post pour communiquer avec la bd)
+                fichiers contenant les informations de la bd : 3 fichiers contient les differentes base de donnees des entités (users / messages / amities)
+                le code de l'api sert de lien entre le client et le serveur (on recoit des promesses des fichiers src du serveur et on envoie le resultat au client qui doit ensuite traiter les information renvoyees)
+
+Les Services:  C users : Create user / get user / exist / checkpassword
+                J messages : create message / get message specifique / get all message / suppression d'un message
+                C amities : create amitie / get lien amitie / delete lien amitie
+
+J Nous allons vous Expliquer un service qui permet de recuperer l'ensemble des messages
+    on lance un get depuis le client, qui permet a l'api d'appeler la bonne fonction grace au chemin fourni par le client, et effectue alors le service demandé en recupererant les donnes dans la bas via un get.
+
+C Une session est lancé Lors de l'inscription ou de la connnexion, on recupere alors le pseudo qui est unique, et la session restera a cet utilisateur tant qu'il ne s'est pas deconnecte, et donc que l'etat de connexion est a true.
+
+Nous avons une fonctionnalité, qui permet de supprimer un message. Le cliant lance la requete en appuyant sur un  bouton de suppression.
+On fait alors un get pour recuperer le mon message, puis, on le supprime en utilisant remove qui le retire de la base de donnée message.
+
+Pour conclure : 
+    On a eu beaucoup de difficulte quant a la realisation du projet, car on a eu du mal avec le dialogue entre le client et le serveur via l'api et que la Quantite de travail etait importante
+    On a trouvé que la partie serveur etait plus difficile a comprendre que la partie client sur laquelle on a traville le plus longtemps en TDs
+    Le projet nous a interesse malgré les difficultes rencontrées et nous a permi d'avoir une representation concrete de ce qu'etait le developpement web

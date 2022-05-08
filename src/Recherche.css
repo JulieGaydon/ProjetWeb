@@ -1,0 +1,35 @@
+#inputRecherche{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 30px; 
+    width:300px;
+    border: none;
+    background-color:rgb(253, 251, 249); 
+}
+
+#message{
+    width: border-box;
+    border: none;
+    background-color: cadetblue;
+}
+#retourneM{
+    overflow : hidden;
+    overflow-y: scroll; 
+}
+#boutonRecherche{
+    border-radius: 5px;
+    transition-duration: 176ms;
+    background-color:rgb(2, 7, 39);
+    border: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: fit-content;
+    color:white;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px;
+
+}
+#boutonRecherche:hover{
+    background-color:cadetblue;
+    border: 2px solid black;
+}

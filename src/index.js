@@ -1,17 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Logout from './Logout';
-import Inscription from './Inscription';
-import Connexion from './Connexion';
-import Message from './Message';
-import FormAddMessage from './FormAddMessage';
-import ListeMessage from './ListeMessage';
 import PagePrincipale from './PagePrincipale';
-import Profil from './Profil';
 import * as serviceWorker from './serviceWorker';
-import MurDeTweets from './MurDeTweets';
 
 ReactDOM.render(<PagePrincipale/>, document.getElementById('root'));
 

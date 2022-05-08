@@ -1,0 +1,24 @@
+#ami{
+    border: 2px solid black;
+    margin:10px;
+    width: border-box;
+    height: 60px;
+    display: flex;
+    border-radius: 30px;
+
+}
+
+#photoAmi{
+    margin-top:5px;
+    margin-left:5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+#pseudoAmi{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px; 
+    border-radius: 30px;
+    background-color: whitesmoke;
+    border: none;}

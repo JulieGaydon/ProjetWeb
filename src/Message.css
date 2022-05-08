@@ -1,0 +1,51 @@
+#contenu{
+    background-color: white;
+    grid-row: 2;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px; 
+    border: 2px solid black; 
+    width: border-box;
+}
+#cadreMessage{
+    border: 2px solid black;
+    margin: 2px;
+    width: border-box;
+    display: grid;
+    grid-template-rows: 50px fit-content;
+    border: 1px solid black; 
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#enteteMessage{
+    background-color: rgb(236, 234, 236);
+    grid-row: 1;
+    display: flex;
+    justify-content:start;
+    padding: 10px;
+    width: border-box;
+    height: border-box;
+    border: 1px solid black;
+}
+
+#boutonPseudo{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px; 
+    height: fit-content;
+    background-color: rgb(236, 234, 236);
+    border: none;
+}
+
+#boutonSupprimer{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px; 
+    height: fit-content;
+    background-color:rgb(236, 234, 236);
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#boutonSupprimer:hover{
+    background-color:white;
+    border: 2px solid black;
+}

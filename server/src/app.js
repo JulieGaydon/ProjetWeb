@@ -32,6 +32,3 @@ app.use('/api', api.default(db));
 app.on('close', () => {
 });
 exports.default = app;
-
-//lignes 2 et 10 importantes
-//creer des choses de ce genre, avec chemin = api/User.js, api/message.js ...

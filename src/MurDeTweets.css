@@ -1,9 +1,8 @@
 #MurDeTweets{
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 150px 650px;
-    grid-gap: 2px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100px 650px;
     border: none;
 }
 
@@ -20,9 +19,13 @@
    
 }
 
-#enteteM{
-    background-image:url(./fond2.jpeg);
-    border-radius: 5px;
+#recherche{
+    margin-top: 15px;
+    overflow : hidden;
+    overflow-y: scroll; 
+}
+#enteteMur{
+    background-color: cadetblue;
     grid-column: 1/4;
     grid-row: 1;
     padding: 15px;
@@ -32,12 +35,29 @@
     justify-content: space-between;
 }
 
-#recherche{
+#photo{
+    margin-top:10px;
+    margin-left:10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+
+#cadreGauche{
     grid-column: 1;
     grid-row: 2;
-    border: 2px solid whitesmoke;
+    border: 2px solid black;
     border-radius: 5px;
+    height: 715px;
 }
+#cadreProfil{
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(236, 234, 236);
+    display: flex;
+    justify-content: start;
+} 
+
 
 
 #messM{
@@ -48,6 +68,16 @@
 
     
 }
+
+#cadreTweets{
+    border: 3px solid black;
+    border-radius: 5px;
+    overflow : hidden;
+    overflow-y: scroll; 
+    height: 625px;
+}::-webkit-scrollbar {
+    display: none;
+    }
 
 #question{
     grid-column: 3;

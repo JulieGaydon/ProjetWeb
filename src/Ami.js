@@ -1,15 +1,15 @@
 import React, { forwardRef, useState} from 'react';
-import './message.css';
-import Profil from './Profil';
+import './Message.css';
+import './Ami.css';
 
 const Ami = forwardRef(
     ({pseudo},ref)=>{
 
         return(
-            <div className="post" id='Message' ref={ref}>
+            <div className="post" id='ami' ref={ref}>
                 
-                <img id="photo"src="papillon.jpg"/>
-                <button className = "button" id = "pseudo">{pseudo}</button>
+                <img id="photoAmi" src="papillon.jpg"/>
+                <button className = "button" id = "pseudoAmi">@{pseudo}</button>
         
             </div>
         )

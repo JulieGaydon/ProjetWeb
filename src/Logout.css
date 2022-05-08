@@ -1,15 +1,17 @@
 #Blogout{
-    border-radius: 15px;
+    border-radius: 10px;
     background-color:rgb(2, 7, 39);
     transition-duration: 176ms;
-    color : white;
     border: none;
+    font-weight: bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:white;
+    font-size: 30px;
+    width: fit-content;
+    font-size: 25px;
     padding: 10px;
-    /* type de l'ecriture */
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
-    position:fixed;
-    top: 30px;
-    right: 30px;
-
+}
+#Blogout:hover{
+    background-color:cadetblue;
+    border: 2px solid black;
 }

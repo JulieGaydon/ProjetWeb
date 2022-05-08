@@ -16,9 +16,6 @@ class Inscription extends Component{
 
     annulation() {
         this.props.CallBackChangeEtat(false)
-        // return (<div className = "PagePrincipale">
-        //     {<PagePrincipale/>}
-        // </div>);
         }
 
     handleSubmit(event){
@@ -30,7 +27,6 @@ class Inscription extends Component{
         instance.put('api/user',{Nom : this.state.nom, Prenom :  this.state.prenom, Pseudo : this.state.pseudo,Password :  this.state.mdp,AdresseM : this.state.mail, ConfirmMDP :  this.state.confirmMDP})
         .then(function (response){
             console.log("resultat"+response)
-            alert(response)
         })
             .then(()=>{
                 // on transmet le pseudo a PP
@@ -39,7 +35,6 @@ class Inscription extends Component{
             })
         .catch(function (error){
             console.log(error)
-            alert("error"+error)
         })
     }
 
@@ -50,24 +45,24 @@ class Inscription extends Component{
        this.setState({mdp : document.forms["inscriptionF"].elements["mdp"].value});
        this.setState({mail : document.forms["inscriptionF"].elements["mail"].value});
        this.setState({confirmMDP : document.forms["inscriptionF"].elements["confirmMDP"].value});
-        // event.target.value="toto";
     }
 
     EventConnected() {      
         return(
-            //a rajouter : date de naissance, confirmation mdp, photo, centres interets
             <form name = "inscriptionF" onSubmit={this.handleSubmit}>
-                 <h1 id = "PPtitre">ButterFly</h1>
-                <fieldset id = "principal">
+                 <h1 id = "titre">BUTTERFLY</h1>
+                <fieldset id = "cadreInscription">
                     <button type="button" id = "annuler" onClick={()=>this.annulation()}>X</button>
-                    <h2 id="titreI" >Inscription</h2>
-                    <input type = "text" id = "inputI" placeholder='Nom' name = "nom" value= {this.state.nom} onChange= {this.handleChange}></input><br/>
-                    <input type = "text" id = "inputI" placeholder= "Prénom" name = "prenom" value= {this.state.prenom} onChange= {this.handleChange}></input><br/>
-                    <input id = "inputI" type = "email" placeholder="Adresse Mail" name = "mail" value= {this.state.mail} onChange= {this.handleChange}></input><br/>
-                    <input id = "inputI" type = "text" placeholder= "Pseudo" name = "pseudo" value= {this.state.pseudo} onChange= {this.handleChange} ></input><br/>
-                    <input id = "inputI" type = "password" placeholder="Mot de Passe " name = "mdp" value= {this.state.mdp} onChange= {this.handleChange}></input><br/>
-                    <input id = "inputI" type = "password" placeholder="Confirmer Mot de Passe" name = "confirmMDP" value= {this.state.confirmMDP} onChange= {this.handleChange} ></input><br/>
-                    <button type="button" id = "inscription" onClick={()=>this.handleSubmit()}>Inscription</button>
+                    <h2 id="inscription" >INSCRIPTION</h2>
+                    <div id = "inputsInscr">
+                        <input type = "text" id = "inputInscription" placeholder='Nom' name = "nom" value= {this.state.nom} onChange= {this.handleChange}></input><br/>
+                        <input type = "text" id = "inputInscription" placeholder= "Prénom" name = "prenom" value= {this.state.prenom} onChange= {this.handleChange}></input><br/>
+                        <input id = "inputInscription" type = "email" placeholder="Adresse Mail" name = "mail" value= {this.state.mail} onChange= {this.handleChange}></input><br/>
+                        <input id = "inputInscription" type = "text" placeholder= "Pseudo" name = "pseudo" value= {this.state.pseudo} onChange= {this.handleChange} ></input><br/>
+                        <input id = "inputInscription" type = "password" placeholder="Mot de Passe " name = "mdp" value= {this.state.mdp} onChange= {this.handleChange}></input><br/>
+                        <input id = "inputInscription" type = "password" placeholder="Confirmer Mot de Passe" name = "confirmMDP" value= {this.state.confirmMDP} onChange= {this.handleChange} ></input><br/>
+                    </div>
+                    <button type="button" id = "boutonInscription" onClick={()=>this.handleSubmit()}>Inscription</button>
                 </fieldset>
             </form>)
     }

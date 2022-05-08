@@ -36,7 +36,6 @@ function init(db) {
                 return;
             }
             let userid = await users.checkpassword(login, password);
-            console.log("user",userid)
             if (userid) {
                 // Avec middleware express-session
                 req.session.regenerate(function (err) {
@@ -78,13 +77,11 @@ function init(db) {
     router
         .route("/user/:user")
         .get(async (req, res) => {
-        console.log("get user api")
         try {
             const user = await users.get(req.params.user);
             if (!user)
             res.sendStatus(404);
             else
-            console.log("get user api okk !",user)
                 res.send(user);
         }
         catch (e) {
@@ -100,8 +97,8 @@ function init(db) {
             res.status(400).send("Missing fields");
         }
         else if(Password !== ConfirmMDP){
-            console.log("mot de passe differents")
-            res.status(401).send("Mot de passe differents");
+            console.log("mots de passe differents")
+            res.status(401).send("Mots de passe differents");
         }
         //utilisateur exist, on ne cree pas de nouvel utilisateur
         else if(await users.exists(Pseudo)) {
@@ -125,9 +122,7 @@ function init(db) {
     const messages = new Messages.default(db.message);
     router.put("/message", (req, res) => {
         const { Pseudo,message } = req.body;
-        console.log("Message: ",message,req.body)
         if(!message){
-            console.log("Message if: ",message)
             console.log("missing message")
             res.status(401).send("Missing message");
         }else{
@@ -141,7 +136,6 @@ function init(db) {
         .route("/message/:pseudo")
         .get(async (req, res) => {
         try {
-            console.log("pseudo message :",req.params.pseudo)
             const message = await messages.get(req.params.pseudo);
             if (!message){
                 console.log("message pas trouve")
@@ -168,7 +162,6 @@ function init(db) {
         .route("/message/All/:pseudo")
         .get(async (req, res) => {
         try {
-            console.log("pseudo message :",req.params.pseudo)
             const message = await messages.getAllM(req.params.pseudo);
             if (!message){
                 console.log("message pas trouve")
@@ -190,7 +183,6 @@ function init(db) {
     const amities = new Amities.default(db.amitie);
     router.put("/ami", (req, res) => {
         const { Pseudo,Pami } = req.body;
-        console.log("Message: ",Pami,req.body)
         if(!Pami || !Pseudo){
             console.log("missing message")
             res.status(401).send("Missing message");
@@ -205,7 +197,6 @@ function init(db) {
         .route("/ami/:pseudo")
         .get(async (req, res) => {
         try {
-            console.log("pseudo message :",req.params.pseudo)
             const Pami = await amities.get(req.params.pseudo);
             if (!Pami){
                 res.sendStatus(404);
