@@ -5,9 +5,10 @@ import './FormAddMessage.css';
 import axios from 'axios';
 
 function FormAddMessage({passerPseudo}){
-    const[message, addMessage] = useState("");
+    const[message, setMessage] = useState("");
 
-    const publier =() =>{
+    const publier =(e) =>{
+        e.preventDefault();
         const instance = axios.create({
         baseURL: 'http://localhost:4000/',
         timeout: 5000,
@@ -29,8 +30,9 @@ function FormAddMessage({passerPseudo}){
     return(
         <form className = "FormAddMessage" name = "FormAddMessage">
             <div id="message">
-                <input onChange={m => addMessage(m.target.value)} id = "inputM" value = {message} placeholder="Ecrire votre message" type = "text"></input>
-                <button className = "button" id = "publierM" onClick={publier}>Publier</button>
+                <input onChange={(e) => setMessage(e.target.value)} id = "inputM" value={message} placeholder="Ecrivez votre message" type="text"/>
+
+                <button onClick={publier} type="submit"  id = "publierM">Publier</button>
             </div>
         </form>
     )

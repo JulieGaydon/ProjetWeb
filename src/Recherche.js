@@ -1,46 +1,78 @@
 import React, { useState} from 'react';
 import ListeMessage from './ListeMessage';
 import MurDeTweetsF from './MurDeTweets';
+import Message from './Message';
 import './recherche.css';
 import axios from 'axios';
 
-function Recherche(){
+function Recherche({PPpseudo, setClic}){
     const[rechercheU, setRechercheU] = useState("");
+    const[posts, setPosts] = useState([]);
+    let sauv = []
+    // let posts = []
 
-    const rechercher =() =>{
+    const rechercher =(e) =>{
+        e.preventDefault();
+        let p = {PPpseudo}
+        console.log("PPp: ",PPpseudo)
         const instance = axios.create({
-        baseURL: 'http://localhost:4000/',
-        timeout: 5000,
-        headers: {'X-Custom-Header': 'foobar'}
+            baseURL: 'http://localhost:4000/',
+            timeout: 1000,
+            headers: {'X-Custom-Header': 'foobar'}
         });
-        instance.get('api/user/'+rechercheU)
+        let i = 0
+        sauv = []
+        instance.get('api/message/All/'+p.PPpseudo)
         .then(function (response){
             //response.data liste de tous les messages
-            console.log("retourne utilisateur recherche:",response.data)
-            alert("recherche",response.data.pseudo)
-            alert("recherche")
-            if(response.data == []){
-                return <p>Aucun utilisateur ne correspond a votre recherche</p>
-            }else{
-                return <p>pseudo utilisateur {response.data.pseudo}</p>
+            console.log("retourne rechercher all :",response.data)
+            //doc = 1message
+            while(response.data[i] != undefined){
+                var mess = response.data[i].message
+                console.log("mess",mess)
+                console.log("rechercheU",rechercheU)
+                var index = mess.indexOf(rechercheU)
+                console.log("index",index)
+                if(index !== -1){
+                    alert("La sous-chaîne existe!");
+                    console.log("response.data[i]",response.data)
+                    // posts.push(response.data[i])
+                    sauv.push(response.data[i])
+                    setPosts(sauv.map((doc)=>doc))
+                    // setPosts(response.data.map((doc) => doc))
+                    console.log("liste posts",posts)
+                } else{
+                    console.log("La sous-chaîne n'existe pas!");
+                }
+                i = i+1
             }
+            alert("fin while")
         })
         .catch(function (error){
             console.log("message pas bon")
             alert(error)
             console.log(error)
         })
-        alert("fin recherche")
+        alert("fin fonction")
     }
 
     return (
-
-        <form id="BarreRecherche">
+        <div id = "MurDeTweets">
+            <form id="BarreRecherche">
             <div id="message">
-                <label id = "recherIn"></label><input type = "text" id = "inputM" onChange={m => setRechercheU(m.target.value)} value = {rechercheU} placeholder='chercher des abonnés' name = "recherche" ></input>
-                <button className = "button" id = "rech"  onClick={rechercher}>Recherche</button>
+                <input onChange={(e) => setRechercheU(e.target.value)} id = "inputM" value={rechercheU} placeholder="Ecrivez votre message" type="text"/>
+                <button onClick={rechercher} type="submit"  id = "publierM">Rechercher</button>
             </div>
-        </form>
+            </form>
+
+            <div id="messM">
+            {/* <ListeMessage passerPseudo = {PPpseudo} tousMessages = {true}/> */}
+            {console.log("post",posts)}
+            {posts.map((post) => (
+                <Message key = {post._id} pseudo = {post.pseudo} message = {post.message} date = {post.date} setClic= {setClic}/>
+            ))}
+            </div>
+        </div>
         )
     }
 

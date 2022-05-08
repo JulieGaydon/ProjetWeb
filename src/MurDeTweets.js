@@ -63,7 +63,7 @@ function MurDeTweets ({CallBackChangeEtat, PPpseudo}){
                 </div>
             
                 <div id="recherche">
-                    <Recherche/>
+                    <Recherche PPpseudo = {pppseudo} setClic= {setClic}/>
                 </div>
                 
                 <div id="messM">
